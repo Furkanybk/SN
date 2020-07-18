@@ -196,16 +196,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 810537848121079151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ead66eca184c9c4983cd4ef5c8158b9, type: 3}
+  m_Script: {fileID: 11500000, guid: a917969ad959e9441a7dd8f050f3a1f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DivideAxis: 0
-  Orc: {fileID: 6615466232229755047, guid: 6bd85274d3c5ae7408c7d842702f2c8a, type: 3}
+  Orc: {fileID: 6615466232229755047, guid: a5b7407e156b70c4dab64506be3033c1, type: 3}
   MoveSpot: {fileID: 4084605632515737699, guid: e3b378a4d44d4074ab50018585735f24,
     type: 3}
-  OrcNumber: 1
+  OrcNumber: 2
   DivideNumber: 6
-  Margin: 0.2
+  Margin: 0.5
 --- !u!1 &894215837753743875
 GameObject:
   m_ObjectHideFlags: 0

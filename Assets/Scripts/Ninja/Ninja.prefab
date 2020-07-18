@@ -44,15 +44,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7491069252528998167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4423957f86fb15e47b80c4b80a29349a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ae29da75ab71974e84132e9a719fd35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  W: 0
-  S: 0
-  A: 0
-  D: 0
-  IsSlideArea: 0
 --- !u!114 &983995928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,9 +56,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7491069252528998167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2434cd207c8dd8748b2c0e8829583ac9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e3ac612bdc81b64695b8ba2285bd9b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  material: {fileID: 0}
+  W: 0
+  S: 0
+  A: 0
+  D: 0
+  IsSlideArea: 0
+  CheckPointText: {fileID: 0}
 --- !u!54 &5192676493825949851
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -166,7 +168,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 7d6053c85452d474baea94ee9f91a327, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: c1ae1766fc1e58741826b84a646e43ee,
         type: 3}
       propertyPath: m_ApplyRootMotion

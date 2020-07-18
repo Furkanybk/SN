@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6615466232229755099}
   - component: {fileID: 6615466232229755098}
-  - component: {fileID: 2941712416787721511}
+  - component: {fileID: 1179206784965890612}
   - component: {fileID: 7320370319022059728}
   m_Layer: 0
   m_Name: Orc
@@ -50,7 +50,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &2941712416787721511
+--- !u!114 &1179206784965890612
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,14 +59,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6615466232229755047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddbd852ea53d7fe4c939f5cc29f452b6, type: 3}
+  m_Script: {fileID: 11500000, guid: ecedf7c8624b6a64da8393d3b3dc38cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0
   WaitTime: 0
   StartWaitTime: 0
-  animator: {fileID: 0}
-  material: {fileID: 2100000, guid: 4d0f74564c7fd9d49ab154068b9c6097, type: 2}
+  animator: {fileID: 3772433168456331987}
+  material: {fileID: 0}
   MoveSpot: {fileID: 0}
   minX: 0
   maxX: 0
@@ -148,11 +148,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -3479922615588753652, guid: 240bc3d9b4bd134449751859f2b416f2,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4d0f74564c7fd9d49ab154068b9c6097, type: 2}
     - target: {fileID: 919132149155446097, guid: 240bc3d9b4bd134449751859f2b416f2,
         type: 3}
       propertyPath: m_Name
@@ -162,17 +157,18 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 8451b1e143b34a0498dab6c7a851c81c, type: 2}
-    - target: {fileID: 5866666021909216657, guid: 240bc3d9b4bd134449751859f2b416f2,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9100000, guid: ccd5677e688694d46ab0bb90e7b82020, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 240bc3d9b4bd134449751859f2b416f2, type: 3}
 --- !u!4 &7114125203961047209 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 240bc3d9b4bd134449751859f2b416f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7291550255541980994}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3772433168456331987 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 240bc3d9b4bd134449751859f2b416f2,
     type: 3}
   m_PrefabInstance: {fileID: 7291550255541980994}
   m_PrefabAsset: {fileID: 0}

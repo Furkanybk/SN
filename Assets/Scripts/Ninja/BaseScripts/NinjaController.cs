@@ -20,8 +20,7 @@ public class NinjaController : MonoBehaviour
     public bool A;
     public bool D;
 
-    public bool IsSlideArea;
-    private bool IsStart = false;
+    public bool IsSlideArea; 
     [SerializeField] private Text CheckPointText;
     #region collider
     //public GameObject ColliderEdgePrefab;
@@ -63,14 +62,14 @@ public class NinjaController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if(other.gameObject.tag == "SlideCollider" && !IsSlideArea)
-        //{
-        //    IsSlideArea = true; 
-        //}
-        //else
-        //{
-        //    IsSlideArea = false; 
-        //}
+        if (other.gameObject.tag == "SlideCollider" && !IsSlideArea)
+        {
+            IsSlideArea = true;
+        }
+        else
+        {
+            IsSlideArea = false;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {

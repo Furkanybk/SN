@@ -262,6 +262,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 327095500}
+    - target: {fileID: 983995928, guid: c3884fbb24ed32644903c307634639c3, type: 3}
+      propertyPath: CheckPointText
+      value: 
+      objectReference: {fileID: 1752607990}
     - target: {fileID: 693875210422889443, guid: c3884fbb24ed32644903c307634639c3,
         type: 3}
       propertyPath: m_Controller
@@ -270,12 +274,12 @@ PrefabInstance:
     - target: {fileID: 5192676493825949851, guid: c3884fbb24ed32644903c307634639c3,
         type: 3}
       propertyPath: m_Constraints
-      value: 84
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7491069252528998163, guid: c3884fbb24ed32644903c307634639c3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 19.4
       objectReference: {fileID: 0}
     - target: {fileID: 7491069252528998163, guid: c3884fbb24ed32644903c307634639c3,
         type: 3}
@@ -285,7 +289,7 @@ PrefabInstance:
     - target: {fileID: 7491069252528998163, guid: c3884fbb24ed32644903c307634639c3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 50.5
       objectReference: {fileID: 0}
     - target: {fileID: 7491069252528998163, guid: c3884fbb24ed32644903c307634639c3,
         type: 3}
@@ -1227,7 +1231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseMenuUI: {fileID: 1989734480}
   DeadMenuUI: {fileID: 1684233033}
-  FinishCheck: {fileID: 0}
+  FinishCheck: {fileID: 824560393}
 --- !u!1 &688721337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,6 +1395,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7491069252528998163, guid: c3884fbb24ed32644903c307634639c3,
     type: 3}
   m_PrefabInstance: {fileID: 29580691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &824560393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1484268860826244804, guid: 9379387d06e884d4fac19328155e09d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 6579825086358692011}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &854521678
 GameObject:

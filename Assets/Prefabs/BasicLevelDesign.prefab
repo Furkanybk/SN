@@ -50,6 +50,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6579825084402052050}
     m_Modifications:
+    - target: {fileID: 4681250750224569491, guid: 4e5f170e7910aab40b7bf0a3fa011a27,
+        type: 3}
+      propertyPath: DivideAxis
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6494252605564008736, guid: 4e5f170e7910aab40b7bf0a3fa011a27,
         type: 3}
       propertyPath: m_Name
@@ -58,7 +63,7 @@ PrefabInstance:
     - target: {fileID: 6494252605564008736, guid: 4e5f170e7910aab40b7bf0a3fa011a27,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6494252605564008737, guid: 4e5f170e7910aab40b7bf0a3fa011a27,
         type: 3}
@@ -288,7 +293,7 @@ PrefabInstance:
     - target: {fileID: 894215838023107485, guid: 43c968bec2d77d64694de7776c78324e,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1639301495415631406, guid: 43c968bec2d77d64694de7776c78324e,
         type: 3}
@@ -468,7 +473,7 @@ PrefabInstance:
     - target: {fileID: 894215838023107485, guid: 43c968bec2d77d64694de7776c78324e,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1639301495415631406, guid: 43c968bec2d77d64694de7776c78324e,
         type: 3}
@@ -768,7 +773,7 @@ PrefabInstance:
     - target: {fileID: 6494252605564008736, guid: 4e5f170e7910aab40b7bf0a3fa011a27,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6494252605564008737, guid: 4e5f170e7910aab40b7bf0a3fa011a27,
         type: 3}
@@ -908,7 +913,7 @@ PrefabInstance:
     - target: {fileID: 894215838023107485, guid: 43c968bec2d77d64694de7776c78324e,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43c968bec2d77d64694de7776c78324e, type: 3}
@@ -1043,7 +1048,7 @@ PrefabInstance:
     - target: {fileID: 6494252605564008736, guid: 4e5f170e7910aab40b7bf0a3fa011a27,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6494252605564008737, guid: 4e5f170e7910aab40b7bf0a3fa011a27,
         type: 3}

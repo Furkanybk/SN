@@ -52,7 +52,7 @@ public class GameMenu : MonoBehaviour
     {
         DeadMenuUI.SetActive(true); 
         DeadMenuUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "WELL PLAYED";
-        FinishCheck.gameObject.GetComponent<BoxCollider>().enabled = true;
+        FinishCheck.gameObject.SetActive(true);
     }
 
     public void Restart()

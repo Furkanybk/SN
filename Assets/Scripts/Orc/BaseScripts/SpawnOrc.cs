@@ -70,8 +70,8 @@ public class SpawnOrc : MonoBehaviour
                         oc.MoveSpot = Instantiate(MoveSpot, position, Quaternion.identity, parent).transform;
                         oc.MoveSpot.name = obj.name + " Move Spot";
 
-                        oc.Speed = 3;
-                        oc.StartWaitTime = 5;
+                        oc.Speed = 3.5f;
+                        oc.StartWaitTime = 1.75f;
                         oc.minX = pieceS;
                         oc.maxX = pieceE;
                         oc.minZ = startZ;
@@ -102,9 +102,12 @@ public class SpawnOrc : MonoBehaviour
 
                         Vector3 position = new Vector3(x, 2f, z); 
                         GameObject obj = Instantiate(Orc, position, Quaternion.identity, parent);
+                        obj.name = "Orc " + OrcCount++;
 
                         OrcController oc = obj.GetComponent<OrcController>();
                         oc.MoveSpot = Instantiate(MoveSpot, position, Quaternion.identity, parent).transform;
+                        oc.MoveSpot.name = obj.name + " Move Spot";
+
                         oc.Speed = 3.5f;
                         oc.StartWaitTime = 1.75f;
                         oc.minX = startX;

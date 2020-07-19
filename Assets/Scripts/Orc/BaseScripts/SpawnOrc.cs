@@ -71,7 +71,8 @@ public class SpawnOrc : MonoBehaviour
                         oc.MoveSpot.name = obj.name + " Move Spot";
 
                         oc.Speed = 3.5f;
-                        oc.StartWaitTime = 1.75f;
+                        oc.StartWaitTime = 3f;
+                        oc.RandomizeRange = 1f;
                         oc.minX = pieceS;
                         oc.maxX = pieceE;
                         oc.minZ = startZ;
@@ -88,12 +89,9 @@ public class SpawnOrc : MonoBehaviour
 
                     Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, pieceS), new Vector3(transform.position.x, transform.position.y + 5, pieceS), Color.red, 100);
                     Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, pieceE), new Vector3(transform.position.x, transform.position.y + 5, pieceE), Color.red, 100);
-
-
+                    
                     Debug.DrawLine(new Vector3(startX, transform.position.y, transform.position.z), new Vector3(startX, transform.position.y + 5, transform.position.z), Color.red, 100);
                     Debug.DrawLine(new Vector3(endX, transform.position.y, transform.position.z), new Vector3(endX, transform.position.y + 5, transform.position.z), Color.red, 100);
-
-                    //Debug.Log("PieceS:" + pieceS + " PieceE: " + pieceE);
 
                     for (int i = 0; i < OrcNumber; i++)
                     {
@@ -109,7 +107,8 @@ public class SpawnOrc : MonoBehaviour
                         oc.MoveSpot.name = obj.name + " Move Spot";
 
                         oc.Speed = 3.5f;
-                        oc.StartWaitTime = 1.75f;
+                        oc.StartWaitTime = 3f;
+                        oc.RandomizeRange = 1f;
                         oc.minX = startX;
                         oc.maxX = endX;
                         oc.minZ = pieceS;

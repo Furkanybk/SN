@@ -65,12 +65,11 @@ public class OrcController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (!Idle && other.transform.Equals(MoveSpot))
         {
             Idle = true;
         }
     }
-
 }

@@ -80,9 +80,11 @@ public class NinjaController : MonoBehaviour
 
         if(collision.collider.gameObject.layer == 8)
         {
+            RIGID_BODY.velocity = Vector3.zero;
             CheckPointText.text = "YOU GOT THIS";
             CheckPointText.enabled = true;
             StartCoroutine(closeText(2f));
+
         }
 
         if (collision.collider.gameObject.layer == 13)

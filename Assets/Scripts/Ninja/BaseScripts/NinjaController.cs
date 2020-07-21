@@ -112,6 +112,7 @@ public class NinjaController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (animator.GetBool(TransitionParameters.Death.ToString())) return;
         //float horizontal = 0;
         //if (S) horizontal = 1;
         //else if (W) horizontal = -1;

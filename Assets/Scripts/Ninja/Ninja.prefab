@@ -61,14 +61,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 693875210422889443}
-  Speed: 2
-  TurnSmoothTime: 0.1
-  W: 0
-  S: 0
-  A: 0
-  D: 0
-  IsSlideArea: 0
+  Speed: 10
+  TurnSmoothTime: 0.685
   CheckPointText: {fileID: 0}
+  vertical: 0
+  horizontal: 0
+  IsSlideArea: 0
 --- !u!54 &5192676493825949851
 Rigidbody:
   m_ObjectHideFlags: 0

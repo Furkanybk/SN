@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Idle : StateMachineBehaviour
 {
+    NinjaController ninja;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    { 
-
+    {
+        ninja = animator.GetComponentInParent<NinjaController>();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        NinjaController ninja = animator.GetComponentInParent<NinjaController>();
-
-        if(ninja.W || ninja.A || ninja.S || ninja.D)
+        if(ninja.vertical != 0 || ninja.horizontal != 0 /*ninja.W || ninja.A || ninja.S || ninja.D*/)
         { 
             animator.SetBool(TransitionParameters.Sprint.ToString(), true);
         } 

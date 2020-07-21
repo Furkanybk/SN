@@ -15,22 +15,31 @@ public class NinjaController : MonoBehaviour
 {
     public Animator animator;
 
+    [Range(1f,10f)]
     public float Speed = 2f;
-    public float TurnSmoothTime = 0.1f;
+    [Range(0.01f, 1f)]
+    public float TurnSmoothTime = 0.685f;
+
     private float TurnSmoothVelocity = 0;
 
-    [HideInInspector]
-    public bool W;
-    [HideInInspector]
-    public bool S;
-    [HideInInspector]
-    public bool A;
-    [HideInInspector]
-    public bool D;
+    [SerializeField] private Text CheckPointText;
 
-    public bool IsSlideArea; 
+    [HideInInspector]
+    public float vertical = 0;
+    [HideInInspector]
+    public float horizontal = 0;
 
-    [SerializeField] private Text CheckPointText; 
+    //[HideInInspector]
+    //public bool W;
+    //[HideInInspector]
+    //public bool S;
+    //[HideInInspector]
+    //public bool A;
+    //[HideInInspector]
+    //public bool D;
+    //[HideInInspector]
+    public bool IsSlideArea;
+
 
     private Rigidbody rigid;
     public Rigidbody RIGID_BODY
@@ -103,25 +112,45 @@ public class NinjaController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float horizontal = 0;
-        if (D) horizontal = 1;
-        else if (A) horizontal = -1;
+        //float horizontal = 0;
+        //if (S) horizontal = 1;
+        //else if (W) horizontal = -1;
 
-        float vertical = 0;
-        if (W) vertical = 1;
-        else if (S) vertical = -1;
+        //float vertical = 0;
+        //if (D) vertical = 1;
+        //else if (A) vertical = -1;
 
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        vertical = Input.GetAxisRaw("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        //Debug.Log(vertical + " " + horizontal);
 
-        if (direction.magnitude >= 0.1f)
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized; //TODO Change direction due to camera.
+
+        if (!IsSlideArea)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref TurnSmoothVelocity, TurnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            if (horizontal == 0 && vertical == 0) return;
+            if (direction.magnitude >= 0.1f)
+            {
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref TurnSmoothVelocity, TurnSmoothTime / 5);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            RIGID_BODY.MovePosition(RIGID_BODY.position + moveDir.normalized * Speed * Time.fixedDeltaTime);
+                RIGID_BODY.MovePosition(RIGID_BODY.position + moveDir.normalized * (Speed/1.5f) * Time.fixedDeltaTime);
+            }
+        }
+        else
+        {
+            if (direction.magnitude >= 0.1f)
+            {
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref TurnSmoothVelocity, TurnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+                //Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            }
+            transform.Translate(Vector3.forward * Speed * Time.deltaTime);
         }
     }
 

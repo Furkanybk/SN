@@ -21,13 +21,7 @@ public class NinjaController : MonoBehaviour
     public bool D;
 
     public bool IsSlideArea; 
-    [SerializeField] private Text CheckPointText;
-    #region collider
-    //public GameObject ColliderEdgePrefab;
-    //public List<GameObject> BottomSpheres = new List<GameObject>();
-    //public List<GameObject> FrontSpheres = new List<GameObject>();
-    //public List<Collider> RagdollParts = new List<Collider>(); 
-    #endregion
+    [SerializeField] private Text CheckPointText; 
 
     private Rigidbody rigid;
     public Rigidbody RIGID_BODY
@@ -39,24 +33,6 @@ public class NinjaController : MonoBehaviour
                 rigid = GetComponent<Rigidbody>();
             }
             return rigid;
-        }
-    }
-
-    public void ChangeMaterial()
-    {
-        if (material == null)
-        {
-            Debug.LogError("No material specified...");
-        }
-
-        Renderer[] arrMaterials = this.gameObject.GetComponentsInChildren<Renderer>();
-
-        foreach (Renderer r in arrMaterials)
-        {
-            if (r.gameObject != this.gameObject)
-            {
-                r.material = material;
-            }
         }
     }
 
@@ -91,8 +67,7 @@ public class NinjaController : MonoBehaviour
         { 
             FindObjectOfType<GameMenu>().Complete();
         }
-    }
-
+    } 
     private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.gameObject.layer == 10 && !IsSlideArea)
@@ -104,11 +79,27 @@ public class NinjaController : MonoBehaviour
             IsSlideArea = false;
         }
     }
+     
+    public void ChangeMaterial()
+    {
+        if (material == null)
+        {
+            Debug.LogError("No material specified...");
+        }
 
+        Renderer[] arrMaterials = this.gameObject.GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer r in arrMaterials)
+        {
+            if (r.gameObject != this.gameObject)
+            {
+                r.material = material;
+            }
+        }
+    } 
     private IEnumerator closeText(float time)
     {
         yield return new WaitForSeconds(time);
         CheckPointText.enabled = false;
     }
-
 } 

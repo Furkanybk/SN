@@ -262,14 +262,6 @@ PrefabInstance:
       propertyPath: CheckPointText
       value: 
       objectReference: {fileID: 1752607990}
-    - target: {fileID: 983995928, guid: c3884fbb24ed32644903c307634639c3, type: 3}
-      propertyPath: Speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 983995928, guid: c3884fbb24ed32644903c307634639c3, type: 3}
-      propertyPath: TurnSmoothTime
-      value: 0.685
-      objectReference: {fileID: 0}
     - target: {fileID: 7491069252528998163, guid: c3884fbb24ed32644903c307634639c3,
         type: 3}
       propertyPath: m_LocalPosition.x

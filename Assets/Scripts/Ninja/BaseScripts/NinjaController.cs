@@ -15,7 +15,7 @@ public class NinjaController : MonoBehaviour
 {
     public Animator animator;
 
-    [Range(1f,10f)]
+    [Range(1f, 10f)]
     public float Speed = 2f;
     [Range(0.01f, 1f)]
     public float TurnSmoothTime = 0.685f;
@@ -57,14 +57,14 @@ public class NinjaController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.tag == "Orc")
+        if (collision.collider.tag == "Orc")
         {
             Debug.Log("Died");
             animator.SetBool(TransitionParameters.Death.ToString(), true);
             return;
-        }  
+        }
 
-        if(collision.collider.gameObject.layer == 8)
+        if (collision.collider.gameObject.layer == 8)
         {
             RIGID_BODY.velocity = Vector3.zero;
             CheckPointText.text = "YOU GOT THIS";
@@ -75,7 +75,7 @@ public class NinjaController : MonoBehaviour
         }
 
         if (collision.collider.gameObject.layer == 13)
-        { 
+        {
             FindObjectOfType<GameMenu>().Complete();
             return;
         }
@@ -113,6 +113,7 @@ public class NinjaController : MonoBehaviour
     private void FixedUpdate()
     {
         if (animator.GetBool(TransitionParameters.Death.ToString())) return;
+
         //float horizontal = 0;
         //if (S) horizontal = 1;
         //else if (W) horizontal = -1;
@@ -121,8 +122,9 @@ public class NinjaController : MonoBehaviour
         //if (D) vertical = 1;
         //else if (A) vertical = -1;
 
-        vertical = Input.GetAxisRaw("Vertical");
-        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = SimpleInput.GetAxisRaw("Vertical");
+        horizontal = SimpleInput.GetAxisRaw("Horizontal");
+
         //Debug.Log(vertical + " " + horizontal);
 
         Camera cam = Camera.main;
@@ -135,8 +137,8 @@ public class NinjaController : MonoBehaviour
         right.y = 0;
         right.Normalize();
 
-        Vector3 direction = forward * horizontal  + right * vertical;
-        //Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized; //TODO Change direction due to camera.
+        Vector3 direction = forward * vertical + right * horizontal;
+        //Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (!IsSlideArea)
         {
@@ -149,7 +151,7 @@ public class NinjaController : MonoBehaviour
 
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-                RIGID_BODY.MovePosition(RIGID_BODY.position + moveDir.normalized * (Speed/1.5f) * Time.fixedDeltaTime);
+                RIGID_BODY.MovePosition(RIGID_BODY.position + moveDir.normalized * (Speed / 1.5f) * Time.fixedDeltaTime);
             }
         }
         else
@@ -171,4 +173,4 @@ public class NinjaController : MonoBehaviour
         yield return new WaitForSeconds(time);
         CheckPointText.enabled = false;
     }
-} 
+}

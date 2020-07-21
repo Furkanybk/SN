@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6615466232229755099
 Transform:
   m_ObjectHideFlags: 0
@@ -63,12 +63,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecedf7c8624b6a64da8393d3b3dc38cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 3772433168456331987}
+  MoveSpot: {fileID: 0}
   Speed: 0
   WaitTime: 0
   StartWaitTime: 0
   RandomizeRange: 0.5
-  animator: {fileID: 3772433168456331987}
-  MoveSpot: {fileID: 0}
   minX: 0
   maxX: 0
   minZ: 0

@@ -10,15 +10,14 @@ public enum T_Parameters
 
 public class OrcController : MonoBehaviour
 {
+    public Animator animator;
+    public Transform MoveSpot;
+    [Space]
     public float Speed;
     public float WaitTime;
     public float StartWaitTime;
     public float RandomizeRange = 0.5f;
-
-    public Animator animator;
-    public Material material;
-    public Transform MoveSpot;
-
+    [Space]
     public float minX;
     public float maxX;
     public float minZ;
@@ -44,24 +43,6 @@ public class OrcController : MonoBehaviour
                 rigid = GetComponent<Rigidbody>();
             }
             return rigid;
-        }
-    }
-
-    public void ChangeMaterial()
-    {
-        if (material == null)
-        {
-            Debug.LogError("No material specified...");
-        }
-
-        Renderer[] arrMaterials = this.gameObject.GetComponentsInChildren<Renderer>();
-
-        foreach (Renderer r in arrMaterials)
-        {
-            if (r.gameObject != this.gameObject)
-            {
-                r.material = material;
-            }
         }
     }
 

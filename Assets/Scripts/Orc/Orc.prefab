@@ -12,13 +12,14 @@ GameObject:
   - component: {fileID: 6615466232229755098}
   - component: {fileID: 1179206784965890612}
   - component: {fileID: 7320370319022059728}
+  - component: {fileID: 7956024629119146108}
   m_Layer: 0
   m_Name: Orc
   m_TagString: Orc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6615466232229755099
 Transform:
   m_ObjectHideFlags: 0
@@ -67,7 +68,6 @@ MonoBehaviour:
   StartWaitTime: 0
   RandomizeRange: 0.5
   animator: {fileID: 3772433168456331987}
-  material: {fileID: 0}
   MoveSpot: {fileID: 0}
   minX: 0
   maxX: 0
@@ -88,6 +88,19 @@ CapsuleCollider:
   m_Height: 2.086232
   m_Direction: 1
   m_Center: {x: 0, y: 0.993116, z: -0.05205393}
+--- !u!114 &7956024629119146108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6615466232229755047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ab3a915de6d5e43a00c36a7516fca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: e696902ef7175fc4289f59a18c7aab08, type: 2}
 --- !u!1001 &7291550255541980994
 PrefabInstance:
   m_ObjectHideFlags: 0

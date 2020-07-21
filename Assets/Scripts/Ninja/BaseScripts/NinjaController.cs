@@ -125,7 +125,18 @@ public class NinjaController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         //Debug.Log(vertical + " " + horizontal);
 
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized; //TODO Change direction due to camera.
+        Camera cam = Camera.main;
+        Vector3 forward = cam.transform.forward;
+        Vector3 right = cam.transform.right;
+
+        forward.y = 0;
+        forward.Normalize();
+
+        right.y = 0;
+        right.Normalize();
+
+        Vector3 direction = forward * horizontal  + right * vertical;
+        //Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized; //TODO Change direction due to camera.
 
         if (!IsSlideArea)
         {

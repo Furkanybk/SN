@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(NinjaController))]
+[CustomEditor(typeof(MaterialSystem))]
 public class MaterialChanger : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
 
-        NinjaController control = (NinjaController)target;
+        MaterialSystem control = (MaterialSystem)target;
 
         if (GUILayout.Button("Change Material"))
         {

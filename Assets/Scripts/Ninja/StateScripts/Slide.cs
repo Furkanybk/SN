@@ -18,7 +18,8 @@ public class Slide : StateMachineBehaviour
     { 
         if (!ninja.IsSlideArea)
         {
-            animator.SetBool(TransitionParameters.Slide.ToString(), false); 
+            animator.SetBool(TransitionParameters.Slide.ToString(), false);
+            return;
         }
          
         float vertical = Input.GetAxisRaw("Vertical");

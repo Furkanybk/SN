@@ -13,7 +13,7 @@ public enum TransitionParameters
 }
 public class NinjaController : MonoBehaviour
 {
-    public Animator animator;
+    public Animator animator; 
 
     [Range(1f, 10f)]
     public float Speed = 2f;
@@ -53,8 +53,7 @@ public class NinjaController : MonoBehaviour
             return rigid;
         }
     }
-
-
+     
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Orc")
@@ -172,5 +171,5 @@ public class NinjaController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         CheckPointText.enabled = false;
-    }
+    } 
 }

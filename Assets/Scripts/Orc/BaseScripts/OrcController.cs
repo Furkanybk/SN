@@ -101,7 +101,7 @@ public class OrcController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject != gameObject)
+        if (other.gameObject != gameObject)
         {
             if (!Idle && other.transform.Equals(MoveSpot))
             {

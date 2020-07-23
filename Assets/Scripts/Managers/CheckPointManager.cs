@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class CheckPointManager : MonoBehaviour
 {
-    private GameManager gm; 
+    private GameManager gm;
+    private bool IsCheckpointPassed = false;
     private void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
@@ -17,21 +18,45 @@ public class CheckPointManager : MonoBehaviour
         {
             gm.PlayerLastCheckPoint = transform.position;
             
-            if(GameObject.FindGameObjectWithTag("Player").transform.position.z != gm.PlayerLastCheckPoint.z)
+            if(this.gameObject.layer != 12)
             {
-                gm.CheckPointInfo = "YOU GOT THIS";
-            }
-            if (this.gameObject.layer != 12)
-            {
-                gm.CheckPointText.enabled = true;
-                gm.CheckPointText.text = gm.CheckPointInfo;
-                StartCoroutine(closeText(2f));  
-            }
+                if(!IsCheckpointPassed)
+                {
+                    IsCheckpointPassed = true;
+                    gm.ReachedCheckPoint++;
+                }
+                gm.Text_ReachedCheckPoint.text = "CheckPoint Saved : " + gm.ReachedCheckPoint;
+
+                if (GameObject.FindGameObjectWithTag("Player").transform.position.z != gm.PlayerLastCheckPoint.z)
+                {
+                    switch (gm.ReachedCheckPoint)
+                    {
+                        case 1: 
+                            gm.CheckPointInfo = "GOOD";
+                            break;
+                        case 2: 
+                            gm.CheckPointInfo = "NICE";
+                            break;
+                        case 3: 
+                            gm.CheckPointInfo = "YOU GOT THIS";
+                            break;
+                        case 4:
+                            gm.CheckPointInfo = "PERFECT";
+                            break;
+                        case 5:
+                            gm.CheckPointInfo = "AMAZING";
+                            break;
+                    }
+                }
+            } 
+            gm.Text_CheckPoint.enabled = true;
+            gm.Text_CheckPoint.text = gm.CheckPointInfo;
+            StartCoroutine(closeText(1f));   
         }
     } 
     private IEnumerator closeText(float time)
     {
         yield return new WaitForSeconds(time);
-        gm.CheckPointText.enabled = false;
+        gm.Text_CheckPoint.enabled = false;
     }
 }

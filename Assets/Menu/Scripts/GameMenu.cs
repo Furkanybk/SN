@@ -14,6 +14,13 @@ public class GameMenu : MonoBehaviour
     public GameObject DeadMenuUI;
     public GameObject FinishCheck;
 
+    private GameManager gm;
+
+
+    private void Start()
+    {
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -51,14 +58,25 @@ public class GameMenu : MonoBehaviour
     public void Complete()
     {
         DeadMenuUI.SetActive(true); 
-        DeadMenuUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "WELL PLAYED";
+        DeadMenuUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "WELL PLAYED"; 
+        DeadMenuUI.transform.GetChild(1).gameObject.SetActive(false);
         FinishCheck.gameObject.SetActive(true);
     }
 
     public void RespawnCheckPoint()
     {
-        Debug.Log("Respawning checkpoint..."); 
-        FindObjectOfType<GameManager>().Respawn();
+        if(gm.CheckPointChance > 0)
+        { 
+            Debug.Log("Respawning checkpoint...");
+            FindObjectOfType<GameManager>().Respawn(); 
+            DeadMenuUI.SetActive(false);
+        }
+        else
+        { 
+            Debug.Log("No more respawn...");
+            DeadMenuUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = " No more respawn you saved " + gm.ReachedCheckPoint + " checkpoınts";
+            DeadMenuUI.transform.GetChild(1).gameObject.SetActive(false);
+        }
     }
 
     public void Restart()

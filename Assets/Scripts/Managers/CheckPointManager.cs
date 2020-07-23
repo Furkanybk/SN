@@ -10,6 +10,8 @@ public class CheckPointManager : MonoBehaviour
     private bool IsCheckpointPassed = false;
     private void Start()
     {
+        //TODO : GameManager classına static kendisini ekle.
+        // Tagden bulmak yerine GameManager.current diye seslen.
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
     }
     private void OnCollisionEnter(Collision collision)

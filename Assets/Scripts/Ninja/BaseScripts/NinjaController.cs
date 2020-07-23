@@ -27,16 +27,6 @@ public class NinjaController : MonoBehaviour
     public float vertical = 0;
     [HideInInspector]
     public float horizontal = 0;
-
-    //[HideInInspector]
-    //public bool W;
-    //[HideInInspector]
-    //public bool S;
-    //[HideInInspector]
-    //public bool A;
-    //[HideInInspector]
-    //public bool D;
-    //[HideInInspector]
     [HideInInspector]
     public bool IsSlideArea;
 
@@ -62,35 +52,24 @@ public class NinjaController : MonoBehaviour
     } 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Orc")
+        if (collision.gameObject.CompareTag("Orc"))
         {
             Debug.Log("Died");
             animator.SetBool(TransitionParameters.Death.ToString(), true);
             return;
         } 
 
-        if (collision.collider.gameObject.layer == 13)
+        if (collision.collider.gameObject.layer == 13) // TODO: Layer sistemini ortadan kaldır, Tag sistemine dön.
         {
             FindObjectOfType<GameMenu>().Complete();
             return;
         }
     }
 
-    // isSlideAre Old:
-    //private void OnTriggerEnter(Collider other) 
-    //{
-    //    if (!IsSlideArea && other.gameObject.tag == "SlideCollider")
-    //    {
-    //        IsSlideArea = true;
-    //    }
-    //    else
-    //    {
-    //        IsSlideArea = false;
-    //    }
-    //}
-
     private void OnCollisionStay(Collision collision)
     {
+        //TODO : Start/End Point Sistemi Değiştiriecek.
+        //Start point, EndPint vs, ayrımına gerek yok, sadece Tagler yeterli (Checkpoint miktarına göre GameManager Hangisi Başlangıç Hangisi son zaten anlayabilir)
         if (IsSlideArea && (collision.collider.gameObject.layer == 8 || collision.collider.gameObject.layer == 12 || collision.collider.gameObject.layer == 13))
         {
             Debug.Log("Not Sliding.");
@@ -109,18 +88,8 @@ public class NinjaController : MonoBehaviour
     {
         if (animator.GetBool(TransitionParameters.Death.ToString())) return;
 
-        //float horizontal = 0;
-        //if (S) horizontal = 1;
-        //else if (W) horizontal = -1;
-
-        //float vertical = 0;
-        //if (D) vertical = 1;
-        //else if (A) vertical = -1;
-
         vertical = SimpleInput.GetAxisRaw("Vertical");
         horizontal = SimpleInput.GetAxisRaw("Horizontal");
-
-        //Debug.Log(vertical + " " + horizontal);
 
         Camera cam = Camera.main;
         Vector3 forward = cam.transform.forward;
@@ -133,7 +102,6 @@ public class NinjaController : MonoBehaviour
         right.Normalize();
 
         Vector3 direction = forward * vertical + right * horizontal;
-        //Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (!IsSlideArea)
         {
@@ -156,8 +124,6 @@ public class NinjaController : MonoBehaviour
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref TurnSmoothVelocity, TurnSmoothTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-                //Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             }
             transform.Translate(Vector3.forward * Speed * Time.deltaTime);
         }

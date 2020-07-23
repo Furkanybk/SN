@@ -55,6 +55,12 @@ public class GameMenu : MonoBehaviour
         FinishCheck.gameObject.SetActive(true);
     }
 
+    public void RespawnCheckPoint()
+    {
+        Debug.Log("Respawning checkpoint..."); 
+        FindObjectOfType<GameManager>().Respawn();
+    }
+
     public void Restart()
     { 
         Debug.Log("Restarting game..."); 

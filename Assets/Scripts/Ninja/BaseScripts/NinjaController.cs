@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum TransitionParameters
@@ -16,13 +17,11 @@ public class NinjaController : MonoBehaviour
     public Animator animator; 
 
     [Range(1f, 10f)]
-    public float Speed = 2f;
+    public float Speed = 10f;
     [Range(0.01f, 1f)]
     public float TurnSmoothTime = 0.685f;
 
-    private float TurnSmoothVelocity = 0;
-
-    [SerializeField] private Text CheckPointText;
+    private float TurnSmoothVelocity = 0; 
 
     [HideInInspector]
     public float vertical = 0;
@@ -38,8 +37,10 @@ public class NinjaController : MonoBehaviour
     //[HideInInspector]
     //public bool D;
     //[HideInInspector]
+    [HideInInspector]
     public bool IsSlideArea;
 
+    private GameManager gm;
 
     private Rigidbody rigid;
     public Rigidbody RIGID_BODY
@@ -53,7 +54,12 @@ public class NinjaController : MonoBehaviour
             return rigid;
         }
     }
-     
+
+    private void Start()
+    {
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+        transform.position = gm.PlayerLastCheckPoint;
+    } 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Orc")
@@ -61,17 +67,7 @@ public class NinjaController : MonoBehaviour
             Debug.Log("Died");
             animator.SetBool(TransitionParameters.Death.ToString(), true);
             return;
-        }
-
-        if (collision.collider.gameObject.layer == 8)
-        {
-            RIGID_BODY.velocity = Vector3.zero;
-            CheckPointText.text = "YOU GOT THIS";
-            CheckPointText.enabled = true;
-            StartCoroutine(closeText(2f));
-            Debug.Log("Checkpoint");
-            return;
-        }
+        } 
 
         if (collision.collider.gameObject.layer == 13)
         {
@@ -165,11 +161,5 @@ public class NinjaController : MonoBehaviour
             }
             transform.Translate(Vector3.forward * Speed * Time.deltaTime);
         }
-    }
-
-    private IEnumerator closeText(float time)
-    {
-        yield return new WaitForSeconds(time);
-        CheckPointText.enabled = false;
     } 
 }

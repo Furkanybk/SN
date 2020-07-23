@@ -64,15 +64,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3772433168456331987}
+  MoveSpotAsset: {fileID: 4084605632515737699, guid: e3b378a4d44d4074ab50018585735f24,
+    type: 3}
   MoveSpot: {fileID: 0}
   Speed: 0
   WaitTime: 0
   StartWaitTime: 0
   RandomizeRange: 0.5
-  minX: 0
-  maxX: 0
-  minZ: 0
-  maxZ: 0
   Idle: 1
 --- !u!136 &7320370319022059728
 CapsuleCollider:

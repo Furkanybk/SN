@@ -67,16 +67,7 @@ public class SpawnOrc : MonoBehaviour
                         obj.name = "Orc " + OrcCount++;
 
                         OrcController oc = obj.GetComponent<OrcController>();
-                        oc.MoveSpot = Instantiate(MoveSpot, position, Quaternion.identity, parent).transform;
-                        oc.MoveSpot.name = obj.name + " Move Spot";
-
-                        oc.Speed = 3.5f;
-                        oc.StartWaitTime = 1.75f;
-                        oc.minX = pieceS;
-                        oc.maxX = pieceE;
-                        oc.minZ = startZ;
-                        oc.maxZ = endZ;
-                        oc.Setup();
+                        oc.Setup(new Vector2(pieceS, startZ), new Vector2(pieceE, endZ));
                     }
                 }
                 break;
@@ -105,16 +96,7 @@ public class SpawnOrc : MonoBehaviour
                         obj.name = "Orc " + OrcCount++;
 
                         OrcController oc = obj.GetComponent<OrcController>();
-                        oc.MoveSpot = Instantiate(MoveSpot, position, Quaternion.identity, parent).transform;
-                        oc.MoveSpot.name = obj.name + " Move Spot";
-
-                        oc.Speed = 3.5f;
-                        oc.StartWaitTime = 1.75f;
-                        oc.minX = startX;
-                        oc.maxX = endX;
-                        oc.minZ = pieceS;
-                        oc.maxZ = pieceE;
-                        oc.Setup();
+                        oc.Setup(new Vector2(startX, pieceS), new Vector2(endX, pieceE));
                     }
                 }
                 break;

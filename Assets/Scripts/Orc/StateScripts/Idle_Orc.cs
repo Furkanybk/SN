@@ -15,7 +15,7 @@ public class Idle_Orc : StateMachineBehaviour
     {
         if (orc.WaitTime <= 0)
         {
-            orc.MoveSpot.position = new Vector3(Random.Range(orc.minX, orc.maxX), orc.transform.position.y, Random.Range(orc.minZ, orc.maxZ));
+            orc.newMoveSpot();
             animator.SetBool(T_Parameters.Running.ToString(), true);
         }
         else
@@ -26,6 +26,5 @@ public class Idle_Orc : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
     }
 }

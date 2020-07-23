@@ -47,12 +47,11 @@ public class NinjaController : MonoBehaviour
 
     private void Start()
     {
-        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
-        transform.position = gm.PlayerLastCheckPoint;
+        transform.position = GameManager.current.PlayerLastCheckPoint;
     } 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Orc"))
+        if (!animator.GetBool(TransitionParameters.Death.ToString()) && collision.gameObject.CompareTag("Orc"))
         {
             Debug.Log("Died");
             animator.SetBool(TransitionParameters.Death.ToString(), true);
@@ -76,7 +75,7 @@ public class NinjaController : MonoBehaviour
             IsSlideArea = false;
             return;
         }
-        if (!IsSlideArea && collision.collider.gameObject.layer == 10)
+        else if (!IsSlideArea && collision.collider.gameObject.layer == 10)
         {
             Debug.Log("Sliding.");
             IsSlideArea = true;

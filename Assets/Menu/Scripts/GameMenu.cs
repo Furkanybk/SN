@@ -14,13 +14,6 @@ public class GameMenu : MonoBehaviour
     public GameObject DeadMenuUI;
     public GameObject FinishCheck;
 
-    private GameManager gm;
-
-
-    private void Start()
-    {
-        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
-    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -65,7 +58,7 @@ public class GameMenu : MonoBehaviour
 
     public void RespawnCheckPoint()
     {
-        if(gm.CheckPointChance > 0)
+        if(GameManager.current.CheckPointChance > 0)
         { 
             Debug.Log("Respawning checkpoint...");
             FindObjectOfType<GameManager>().Respawn(); 
@@ -74,7 +67,7 @@ public class GameMenu : MonoBehaviour
         else
         { 
             Debug.Log("No more respawn...");
-            DeadMenuUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = " No more respawn you saved " + gm.ReachedCheckPoint + " checkpoınts";
+            DeadMenuUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = " No more respawn you saved " + GameManager.current.ReachedCheckPoint + " checkpoınts";
             DeadMenuUI.transform.GetChild(1).gameObject.SetActive(false);
         }
     }

@@ -5,7 +5,9 @@ using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
-{  
+{
+    public static GameManager current = null;
+
     public Vector3 PlayerLastCheckPoint;
     public int CheckPointChance = 2;
     public int ReachedCheckPoint = 0;
@@ -17,7 +19,25 @@ public class GameManager : MonoBehaviour
      
     [HideInInspector]
     public string CheckPointInfo = "Welcome Ninja Slide";
-     
+
+    private void Awake()
+    {
+        if(current != null)
+        {
+            //Destroy(current);
+            Debug.Log("Already a GameManager Working.");
+        }
+        else
+        {
+            current = this;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (current == this)
+            current = null;
+    }
 
     private void Start()
     {

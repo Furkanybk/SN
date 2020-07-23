@@ -56,7 +56,7 @@ public class OrcController : MonoBehaviour
 
     public void newMoveSpot()
     {
-        if(MoveSpot == null)
+        if (MoveSpot == null)
         {
             MoveSpot = Instantiate(MoveSpotAsset, transform.position, Quaternion.identity, transform.parent).transform;
             MoveSpot.name = name + " Move Spot";
@@ -86,17 +86,31 @@ public class OrcController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //TODO : Yeni hedef konum Orc'un arkasında olacak.
-        if(!Idle && collision.gameObject.CompareTag("Orc"))
+        if (collision.gameObject != gameObject)
         {
-            newMoveSpot();
+            if (!Idle && collision.gameObject.CompareTag("Orc"))
+            {
+                newMoveSpot();
+            }
+        }
+        else
+        {
+            Debug.Log("Kendine Çarptı Manyak.");
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (!Idle && other.transform.Equals(MoveSpot))
+        if (collision.gameObject != gameObject)
         {
-            Idle = true;
+            if (!Idle && other.transform.Equals(MoveSpot))
+            {
+                Idle = true;
+            }
+        }
+        else
+        {
+            Debug.Log("Kendine Çarptı Manyak.");
         }
     }
 }

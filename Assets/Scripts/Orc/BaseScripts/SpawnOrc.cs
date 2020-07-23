@@ -62,7 +62,7 @@ public class SpawnOrc : MonoBehaviour
                         float x = Random.Range(pieceS, pieceE);
                         float z = Random.Range(startZ, endZ);
 
-                        Vector3 position = new Vector3(x, 2f, z);
+                        Vector3 position = new Vector3(x, 0.5f, z);
                         GameObject obj = Instantiate(Orc, position, Quaternion.identity, parent);
                         obj.name = "Orc " + OrcCount++;
 
@@ -91,7 +91,7 @@ public class SpawnOrc : MonoBehaviour
                         float x = Random.Range(startX, endX);
                         float z = Random.Range(pieceS, pieceE);
 
-                        Vector3 position = new Vector3(x, 2f, z); 
+                        Vector3 position = new Vector3(x, 0.5f, z); 
                         GameObject obj = Instantiate(Orc, position, Quaternion.identity, parent);
                         obj.name = "Orc " + OrcCount++;
 

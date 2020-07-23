@@ -9,11 +9,11 @@ public class CheckPointManager : MonoBehaviour
     private bool IsCheckpointPassed = false;
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Player"))
         {
             GameManager.current.PlayerLastCheckPoint = transform.position;
             
-            if(this.gameObject.layer != 12)
+            if(gameObject.layer != 12)
             {
                 if(!IsCheckpointPassed)
                 {
@@ -22,7 +22,7 @@ public class CheckPointManager : MonoBehaviour
                 }
                 GameManager.current.Text_ReachedCheckPoint.text = "CheckPoint Saved : " + GameManager.current.ReachedCheckPoint;
 
-                if (GameObject.FindGameObjectWithTag("Player").transform.position.z != GameManager.current.PlayerLastCheckPoint.z)
+                if (/*GameObject.FindGameObjectWithTag("Player")*/collision.gameObject.transform.position.z != GameManager.current.PlayerLastCheckPoint.z)
                 {
                     switch (GameManager.current.ReachedCheckPoint)
                     {

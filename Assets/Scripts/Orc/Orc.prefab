@@ -71,6 +71,7 @@ MonoBehaviour:
   WaitTime: 0
   StartWaitTime: 0
   RandomizeRange: 0.5
+  minMoveDistance: 1
   Idle: 1
 --- !u!136 &7320370319022059728
 CapsuleCollider:
@@ -99,6 +100,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: e696902ef7175fc4289f59a18c7aab08, type: 2}
+--- !u!135 &2817936868833631774
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7141910716874940951}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: -0.1, y: 0, z: 0}
+--- !u!135 &5823587075958483560
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8622002477514970975}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: 0.1, y: 0, z: 0}
 --- !u!1001 &7291550255541980994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -187,6 +214,18 @@ Transform:
 --- !u!95 &3772433168456331987 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 240bc3d9b4bd134449751859f2b416f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7291550255541980994}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7141910716874940951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8778109796107686571, guid: 240bc3d9b4bd134449751859f2b416f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7291550255541980994}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8622002477514970975 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7883749328917080035, guid: 240bc3d9b4bd134449751859f2b416f2,
     type: 3}
   m_PrefabInstance: {fileID: 7291550255541980994}
   m_PrefabAsset: {fileID: 0}

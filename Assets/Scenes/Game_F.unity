@@ -318,6 +318,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: KeyboardInput
       objectReference: {fileID: 0}
+    - target: {fileID: 2562645362750789430, guid: 97d23441fc6e1634982d73ce6a9d2765,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97d23441fc6e1634982d73ce6a9d2765, type: 3}
 --- !u!1 &281213714
@@ -580,6 +585,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442710951}
   m_CullTransparentMesh: 0
+--- !u!1 &472923341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 472923343}
+  - component: {fileID: 472923342}
+  m_Layer: 0
+  m_Name: TerrainGroup_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &472923342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472923341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca34a6148db2d54493f84f379293f33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GroupID: 0
+--- !u!4 &472923343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472923341}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -250, y: 0, z: -250}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2086333200}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &524697653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,7 +1501,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.61237246, y: 0.35355335, z: -0.61237246, w: 0.35355335}
-  m_LocalPosition: {x: 0, y: 20, z: 5}
+  m_LocalPosition: {x: -38.31, y: 20, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2833,7 +2883,7 @@ PrefabInstance:
     - target: {fileID: 2348965328566835496, guid: c9bce6a79224bc646b6f2532571199a7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.26
       objectReference: {fileID: 0}
     - target: {fileID: 2348965328566835496, guid: c9bce6a79224bc646b6f2532571199a7,
         type: 3}
@@ -3010,6 +3060,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Maze
       objectReference: {fileID: 0}
+    - target: {fileID: 7820706701759711363, guid: c9bce6a79224bc646b6f2532571199a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7891902148271957110, guid: c9bce6a79224bc646b6f2532571199a7,
         type: 3}
       propertyPath: m_IsActive
@@ -3043,6 +3098,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5914945960923280114, guid: 38b84ba5608a26f4d9f47a57160b82ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5914945960923280116, guid: 38b84ba5608a26f4d9f47a57160b82ca,
         type: 3}
@@ -3937,6 +3997,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064252312}
   m_CullTransparentMesh: 0
+--- !u!1 &2086333199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2086333200}
+  - component: {fileID: 2086333202}
+  - component: {fileID: 2086333201}
+  m_Layer: 0
+  m_Name: Terrain_0_0_75834812-0017-4094-aab8-1b54a3eecdb2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &2086333200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086333199}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 472923343}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!154 &2086333201
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086333199}
+  m_Material: {fileID: 0}
+  m_Enabled: 1
+  m_TerrainData: {fileID: 15600000, guid: 5d0cb5e359df4584799b942b7ae52d31, type: 2}
+  m_EnableTreeColliders: 1
+--- !u!218 &2086333202
+Terrain:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086333199}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_TerrainData: {fileID: 15600000, guid: 5d0cb5e359df4584799b942b7ae52d31, type: 2}
+  m_TreeDistance: 5000
+  m_TreeBillboardDistance: 50
+  m_TreeCrossFadeLength: 5
+  m_TreeMaximumFullLODCount: 50
+  m_DetailObjectDistance: 80
+  m_DetailObjectDensity: 1
+  m_HeightmapPixelError: 5
+  m_SplatMapDistance: 1024
+  m_HeightmapMaximumLOD: 0
+  m_ShadowCastingMode: 2
+  m_DrawHeightmap: 1
+  m_DrawInstanced: 1
+  m_DrawTreesAndFoliage: 1
+  m_ReflectionProbeUsage: 1
+  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_BakeLightProbesForTrees: 1
+  m_PreserveTreePrototypeLayers: 0
+  m_DeringLightProbesForTrees: 1
+  m_ScaleInLightmap: 0.8
+  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
+  m_GroupingID: 0
+  m_RenderingLayerMask: 1
+  m_AllowAutoConnect: 1
 --- !u!1 &2096270874
 GameObject:
   m_ObjectHideFlags: 0
@@ -4100,7 +4236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1205576720}
-  m_PathPosition: 618.0424
+  m_PathPosition: 173.9032
   m_PositionUnits: 1
   m_PathOffset: {x: 0, y: 5, z: 0}
   m_XDamping: 0
@@ -4214,7 +4350,7 @@ PrefabInstance:
     - target: {fileID: 5363258314993370275, guid: 5d714b31e95bfb94994b14f84a2d5665,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.934067
+      value: 99.69183
       objectReference: {fileID: 0}
     - target: {fileID: 5363258314993370275, guid: 5d714b31e95bfb94994b14f84a2d5665,
         type: 3}
@@ -4224,7 +4360,7 @@ PrefabInstance:
     - target: {fileID: 5363258314993370275, guid: 5d714b31e95bfb94994b14f84a2d5665,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.00116
+      value: 81.21939
       objectReference: {fileID: 0}
     - target: {fileID: 5363258314993370275, guid: 5d714b31e95bfb94994b14f84a2d5665,
         type: 3}
@@ -4270,6 +4406,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363258314993370278, guid: 5d714b31e95bfb94994b14f84a2d5665,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d714b31e95bfb94994b14f84a2d5665, type: 3}

@@ -1,10 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
-using UnityEditor.UI;
-using System;
-using UnityEditor.Experimental.TerrainAPI;
+﻿using UnityEditor;
+using UnityEditor.UI; 
 
 [CustomEditor(typeof(BlurPanel))]
 public class BlurPanelEditor : ImageEditor

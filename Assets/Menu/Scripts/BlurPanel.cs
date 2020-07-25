@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroup))]
@@ -11,7 +9,7 @@ public class BlurPanel : Image
     public float time = 0.5f;
     public float delay = 0f;
 
-    CanvasGroup canvas;
+    private CanvasGroup canvas;
 
     protected override void Reset()
     {
@@ -35,6 +33,7 @@ public class BlurPanel : Image
     void UpdateBlur(float value)
     {
         material.SetFloat("_Size", value);
-        canvas.alpha = value;
+        canvas.alpha = value; 
+        time = 0.6f;
     }
 }

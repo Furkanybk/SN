@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class AnimateCamera : MonoBehaviour
-{
+{ 
     Vector3 _newPosition;
     Quaternion _newRotation;
     [SerializeField] Vector2 min;
@@ -19,7 +19,7 @@ public class AnimateCamera : MonoBehaviour
     {
         if (transform.position.x <= 90f)
         {
-            Destroy(gameObject.GetComponent<AnimateCamera>()); 
+            Destroy(gameObject.GetComponent<AnimateCamera>());
         }
         transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * lerpSpeed);        
         transform.rotation = Quaternion.Lerp(transform.rotation, _newRotation, Time.deltaTime * lerpSpeed);        

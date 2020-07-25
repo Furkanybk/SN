@@ -7,9 +7,7 @@ public class AnimateCamera : MonoBehaviour
     [SerializeField] Vector2 min;
     [SerializeField] Vector2 max;
     [SerializeField] Vector2 yRotationRange;
-    [SerializeField] [Range(0.01f, 0.1f)] private float lerpSpeed = 0.05f;
-
-    [SerializeField] GameObject MainMenuUI;
+    [SerializeField] [Range(0.01f, 0.1f)] private float lerpSpeed = 0.05f; 
 
     private void Awake()
     {
@@ -21,8 +19,7 @@ public class AnimateCamera : MonoBehaviour
     {
         if (transform.position.x <= 90f)
         {
-            Destroy(gameObject.GetComponent<AnimateCamera>());
-            MainMenuUI.SetActive(true);
+            Destroy(gameObject.GetComponent<AnimateCamera>()); 
         }
         transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * lerpSpeed);        
         transform.rotation = Quaternion.Lerp(transform.rotation, _newRotation, Time.deltaTime * lerpSpeed);        

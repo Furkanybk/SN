@@ -318,11 +318,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: KeyboardInput
       objectReference: {fileID: 0}
-    - target: {fileID: 2562645362750789430, guid: 97d23441fc6e1634982d73ce6a9d2765,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97d23441fc6e1634982d73ce6a9d2765, type: 3}
 --- !u!1 &281213714
@@ -2858,11 +2853,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5914945960923280114, guid: 38b84ba5608a26f4d9f47a57160b82ca,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5914945960923280116, guid: 38b84ba5608a26f4d9f47a57160b82ca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2918,16 +2908,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5914945960923280117, guid: 38b84ba5608a26f4d9f47a57160b82ca,
-        type: 3}
-      propertyPath: CheckPointText
-      value: 
-      objectReference: {fileID: 704150126}
-    - target: {fileID: 5914945960923280117, guid: 38b84ba5608a26f4d9f47a57160b82ca,
-        type: 3}
-      propertyPath: RespawnNumber
-      value: 
-      objectReference: {fileID: 1033215704}
     - target: {fileID: 5914945960923280117, guid: 38b84ba5608a26f4d9f47a57160b82ca,
         type: 3}
       propertyPath: Text_CheckPoint
@@ -3111,51 +3091,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114282555968907678, guid: e0815e227ed46e445b99930271e8942c,
         type: 3}
-      propertyPath: isDynamicJoystick
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114282555968907678, guid: e0815e227ed46e445b99930271e8942c,
-        type: 3}
       propertyPath: dynamicJoystickMovementArea
       value: 
       objectReference: {fileID: 1648721457}
-    - target: {fileID: 114592483299003616, guid: e0815e227ed46e445b99930271e8942c,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 68779cbdef076cc4fa3f6e3c4edc7873,
-        type: 3}
-    - target: {fileID: 114675716580427132, guid: e0815e227ed46e445b99930271e8942c,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ec82f38f33c98ad4e9b63e173baec013,
-        type: 3}
-    - target: {fileID: 224556125598023028, guid: e0815e227ed46e445b99930271e8942c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224556125598023028, guid: e0815e227ed46e445b99930271e8942c,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 224556125598023028, guid: e0815e227ed46e445b99930271e8942c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224556125598023028, guid: e0815e227ed46e445b99930271e8942c,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 224556125598023028, guid: e0815e227ed46e445b99930271e8942c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 224977699150327530, guid: e0815e227ed46e445b99930271e8942c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3270,11 +3208,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6635859360585334401, guid: c30711460073e1f40b0e160c7e922d4d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6635859362198415709, guid: c30711460073e1f40b0e160c7e922d4d,
         type: 3}
       propertyPath: m_Name
@@ -4169,11 +4102,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 5363258314993370278, guid: 5d714b31e95bfb94994b14f84a2d5665,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d714b31e95bfb94994b14f84a2d5665, type: 3}

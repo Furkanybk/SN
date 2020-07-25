@@ -3,18 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager current = null;
 
     public Vector3 PlayerLastCheckPoint;
-    public int CheckPointChance = 2;
+    public static int TotalChance = 3;
+    public int RemainingChance = TotalChance;
     public int ReachedCheckPoint = 0;
     public GameObject Ninja;
+    public Sprite X_Ninja_Head;
 
     public TextMeshProUGUI Text_CheckPoint;
-    public TextMeshProUGUI Text_RespawnNumber;
+    public GameObject UX_RespawnNumber;
     public TextMeshProUGUI Text_ReachedCheckPoint;
      
     [HideInInspector]
@@ -41,8 +44,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnPlayer(Vector3.zero);
-        Text_RespawnNumber.text = "Try Left : " + CheckPointChance;
+        SpawnPlayer(Vector3.zero); 
     }
 
     public void Respawn()
@@ -50,19 +52,23 @@ public class GameManager : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("Player"));
         SpawnPlayer(PlayerLastCheckPoint);
 
-        switch (CheckPointChance)
+        switch (RemainingChance)
         { 
             case 1:
                 CheckPointInfo = "LAST CHANCE";
                 break;
             case 2:
-                CheckPointInfo = "WATCH OUT ORCS :D";
+                CheckPointInfo = "WATCH OUT";
+                break;
+            case 3:
+                CheckPointInfo = "OOPS";
                 break;
             default:
                 break;
-        }
-        --CheckPointChance;
-        Text_RespawnNumber.text = "Try Left : " + CheckPointChance; 
+        } 
+        --RemainingChance; 
+        UX_RespawnNumber.transform.GetChild(0).gameObject.transform.GetChild(RemainingChance).GetComponent<Image>().sprite = X_Ninja_Head;
+
     }
 
     private void SpawnPlayer(Vector3 pos)

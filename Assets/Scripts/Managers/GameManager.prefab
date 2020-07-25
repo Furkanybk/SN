@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerLastCheckPoint: {x: 0, y: 0, z: 0}
-  CheckPointChance: 2
+  RemainingChance: 3
   ReachedCheckPoint: 0
   Ninja: {fileID: 7491069252528998167, guid: c3884fbb24ed32644903c307634639c3, type: 3}
   Text_CheckPoint: {fileID: 0}
-  Text_RespawnNumber: {fileID: 0}
+  UX_RespawnNumber: {fileID: 0}
   Text_ReachedCheckPoint: {fileID: 0}
   CheckPointInfo: 

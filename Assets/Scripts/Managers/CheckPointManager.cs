@@ -44,27 +44,45 @@ public class CheckPointManager : MonoBehaviour
                     switch (GameManager.current.ReachedCheckPoint)
                     {
                         case 1:
-                            GameManager.current.CheckPointInfo = "GOOD";
+                            GameManager.current.CheckPointInfo = "NICE";
                             break;
                         case 2:
-                            GameManager.current.CheckPointInfo = "NICE";
+                            GameManager.current.CheckPointInfo = "GOOD";
                             break;
                         case 3:
                             GameManager.current.CheckPointInfo = "YOU GOT THIS";
                             break;
                         case 4:
-                            GameManager.current.CheckPointInfo = "PERFECT";
+                            GameManager.current.CheckPointInfo = "WOW";
                             break;
                         case 5:
-                            GameManager.current.CheckPointInfo = "AMAZING";
+                            GameManager.current.CheckPointInfo = "PERFECT";
+                            break;
+                        case 6:
+                            GameManager.current.CheckPointInfo = "GOOD SLIDE";
+                            break;
+                        case 7:
+                            GameManager.current.CheckPointInfo = "AGILE";
+                            break;
+                        case 8:
+                            GameManager.current.CheckPointInfo = "WHAT A MOVEMENT";
+                            break;
+                        case 9:
+                            GameManager.current.CheckPointInfo = "PERFECT SLIDE";
+                            break;
+                        case 10:
+                            GameManager.current.CheckPointInfo = "ALMOST DONE";
+                            break;
+                        case 11:
+                            GameManager.current.CheckPointInfo = "UNSTOPPABLE";
                             break;
                     }
                 }
             }
 
-            GameManager.current.Text_CheckPoint.enabled = true;
-            GameManager.current.Text_CheckPoint.text = GameManager.current.CheckPointInfo;
-            StartCoroutine(closeText(1f));
+            GameManager.current.Text_CheckPoint.enabled = true; 
+            GameManager.current.Text_CheckPoint.text = GameManager.current.CheckPointInfo; 
+            StartCoroutine(closeText(1.5f));
         }
     }
     private IEnumerator closeText(float time)

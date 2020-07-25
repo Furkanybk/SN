@@ -11,10 +11,12 @@ public class GameMenu : MonoBehaviour
 {
     public static GameMenu current = null;
 
-    public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
     public GameObject DeadMenuUI;
-    public GameObject FinishCheck;
+    public GameObject PauseButton;
+     
+    public static bool GameIsPaused = false;
+    public static bool PlayerIsDead = false; 
 
     private void Awake()
     {
@@ -45,16 +47,20 @@ public class GameMenu : MonoBehaviour
             if(GameIsPaused)
             {
                 Resume();
+                PauseButton.SetActive(true);
             }
             else
             {
                 Pause();
+                PauseButton.SetActive(false);
             }
         }
-    } 
+    }
 
-    private void Pause()
+    public void Pause()
     {
+        if (PlayerIsDead) return;
+
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -70,23 +76,26 @@ public class GameMenu : MonoBehaviour
     public void Dead()
     {
         DeadMenuUI.SetActive(true); 
+        PauseButton.SetActive(false);
+        PlayerIsDead = true;
     }
 
     public void Complete()
     {
         DeadMenuUI.SetActive(true); 
         DeadMenuUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "WELL PLAYED"; 
-        DeadMenuUI.transform.GetChild(1).gameObject.SetActive(false);
-        FinishCheck.gameObject.SetActive(true);
+        DeadMenuUI.transform.GetChild(1).gameObject.SetActive(false); 
     }
 
     public void RespawnCheckPoint()
     {
-        if(GameManager.current.CheckPointChance > 0)
+        if(GameManager.current.RemainingChance > 0)
         { 
             Debug.Log("Respawning checkpoint...");
             GameManager.current.Respawn(); 
             DeadMenuUI.SetActive(false);
+            PlayerIsDead = false; 
+            PauseButton.SetActive(true);
         }
         else
         { 

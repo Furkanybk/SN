@@ -49,6 +49,7 @@ public class NinjaController : MonoBehaviour
     {
         transform.position = GameManager.current.PlayerLastCheckPoint;
     } 
+
     private void OnCollisionEnter(Collision collision)
     {
         if (!animator.GetBool(TransitionParameters.Death.ToString()) && collision.gameObject.CompareTag("Orc"))
@@ -56,31 +57,27 @@ public class NinjaController : MonoBehaviour
             Debug.Log("Died");
             animator.SetBool(TransitionParameters.Death.ToString(), true);
             return;
-        } 
-
-        if (collision.collider.gameObject.layer == 13) // TODO: Layer sistemini ortadan kaldır, Tag sistemine dön.
-        {
-            FindObjectOfType<GameMenu>().Complete();
-            return;
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        //TODO : Start/End Point Sistemi Değiştiriecek.
-        //Start point, EndPint vs, ayrımına gerek yok, sadece Tagler yeterli (Checkpoint miktarına göre GameManager Hangisi Başlangıç Hangisi son zaten anlayabilir)
-        if (IsSlideArea && (collision.collider.gameObject.layer == 8 || collision.collider.gameObject.layer == 12 || collision.collider.gameObject.layer == 13))
+        if (IsSlideArea && other.gameObject.GetComponent<CheckPointManager>())
         {
             Debug.Log("Not Sliding.");
             IsSlideArea = false;
             return;
         }
-        else if (!IsSlideArea && collision.collider.gameObject.layer == 10)
+        else if (!IsSlideArea && other.gameObject.CompareTag("SlideArea"))
         {
             Debug.Log("Sliding.");
             IsSlideArea = true;
             return;
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
     }
 
     private void FixedUpdate()

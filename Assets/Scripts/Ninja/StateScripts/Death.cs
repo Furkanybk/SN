@@ -14,7 +14,7 @@ public class Death : StateMachineBehaviour
         ninja.RIGID_BODY.angularVelocity = Vector3.zero;
         ninja.RIGID_BODY.isKinematic = true;
          
-        FindObjectOfType<GameMenu>().Dead();
+        GameMenu.current.Dead();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

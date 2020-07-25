@@ -76,5 +76,6 @@ public class GameManager : MonoBehaviour
         CinemachineStateDrivenCamera camera = GameObject.FindGameObjectWithTag("Camera").gameObject.GetComponent<CinemachineStateDrivenCamera>();
         camera.Follow = ninja.transform;
         camera.LookAt = ninja.transform; 
+        camera.m_AnimatedTarget = ninja.GetComponentInChildren<Animator>();
     }
 }

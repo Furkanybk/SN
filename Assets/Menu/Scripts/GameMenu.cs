@@ -8,11 +8,35 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameMenu : MonoBehaviour
-{ 
+{
+    public static GameMenu current = null;
+
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
     public GameObject DeadMenuUI;
     public GameObject FinishCheck;
+
+    private void Awake()
+    {
+        if(!current)
+        {
+            current = this;
+        }
+        else
+        {
+            Debug.Log("There is already a GameMenu Script.");
+            this.enabled = false;
+            return;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (current == this)
+        {
+            current = null;
+        }
+    }
 
     private void Update()
     {
@@ -61,7 +85,7 @@ public class GameMenu : MonoBehaviour
         if(GameManager.current.CheckPointChance > 0)
         { 
             Debug.Log("Respawning checkpoint...");
-            FindObjectOfType<GameManager>().Respawn(); 
+            GameManager.current.Respawn(); 
             DeadMenuUI.SetActive(false);
         }
         else

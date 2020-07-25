@@ -108,9 +108,5 @@ public class OrcController : MonoBehaviour
                 Idle = true;
             }
         }
-        else
-        {
-            Debug.Log("Kendine Çarptı Manyak.");
-        }
     }
 }

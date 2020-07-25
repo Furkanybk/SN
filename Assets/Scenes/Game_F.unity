@@ -4314,7 +4314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1205576720}
-  m_PathPosition: 156.7668
+  m_PathPosition: 536.8334
   m_PositionUnits: 1
   m_PathOffset: {x: 0, y: 5, z: 0}
   m_XDamping: 0
@@ -4428,7 +4428,7 @@ PrefabInstance:
     - target: {fileID: 5363258314993370275, guid: 5d714b31e95bfb94994b14f84a2d5665,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 83.01759
+      value: 37.607346
       objectReference: {fileID: 0}
     - target: {fileID: 5363258314993370275, guid: 5d714b31e95bfb94994b14f84a2d5665,
         type: 3}
@@ -4438,7 +4438,7 @@ PrefabInstance:
     - target: {fileID: 5363258314993370275, guid: 5d714b31e95bfb94994b14f84a2d5665,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 82.50968
+      value: 36.26732
       objectReference: {fileID: 0}
     - target: {fileID: 5363258314993370275, guid: 5d714b31e95bfb94994b14f84a2d5665,
         type: 3}

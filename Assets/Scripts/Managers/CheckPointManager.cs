@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -28,7 +29,17 @@ public class CheckPointManager : MonoBehaviour
                 return;
             }
 
-            GameManager.current.PlayerLastCheckPoint = transform.position;
+            GameManager.current.PlayerLastCheckPoint = transform.position; 
+
+            if(!GameManager.current.IsRespawned)
+            {
+                GameManager.current.CameraLastPathWay = GameManager.current.camera.transform.GetChild(1).gameObject.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTrackedDolly>().m_PathPosition;
+            }
+            else
+            {
+                GameManager.current.IsRespawned = false;
+            }
+
 
             if (type != CheckPointType.Startpoint)
             {
@@ -39,7 +50,7 @@ public class CheckPointManager : MonoBehaviour
                 }
                 GameManager.current.Text_ReachedCheckPoint.text = "CheckPoint Saved : " + GameManager.current.ReachedCheckPoint;
 
-                if (/*GameObject.FindGameObjectWithTag("Player")*/other.gameObject.transform.position.z != GameManager.current.PlayerLastCheckPoint.z)
+                if (other.gameObject.transform.position.z != GameManager.current.PlayerLastCheckPoint.z)
                 {
                     switch (GameManager.current.ReachedCheckPoint)
                     {

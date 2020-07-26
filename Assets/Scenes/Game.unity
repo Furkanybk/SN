@@ -2784,7 +2784,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1205576719}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1411962243}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a200b19ca1a9685429ed7e043c28e904, type: 3}
@@ -3130,6 +3130,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406040123}
   m_CullTransparentMesh: 0
+--- !u!1 &1411962243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8397375457275892982, guid: 0fccb8398e6ce07419721103fe1828a4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1205576719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1451010359
 GameObject:
   m_ObjectHideFlags: 0
@@ -3873,6 +3879,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 17968abaf7b96fb4c8b823ee6cd8112e,
         type: 3}
+    - target: {fileID: 5914945960923280117, guid: 38b84ba5608a26f4d9f47a57160b82ca,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1604937073647076923}
+    - target: {fileID: 5914945960923280117, guid: 38b84ba5608a26f4d9f47a57160b82ca,
+        type: 3}
+      propertyPath: dolytrack
+      value: 
+      objectReference: {fileID: 1411962243}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38b84ba5608a26f4d9f47a57160b82ca, type: 3}
 --- !u!1 &1648721456
@@ -4924,7 +4940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1205576720}
-  m_PathPosition: 506.8973
+  m_PathPosition: 184.424
   m_PositionUnits: 1
   m_PathOffset: {x: 0, y: 5, z: 0}
   m_XDamping: 0
@@ -4937,8 +4953,8 @@ MonoBehaviour:
   m_AutoDolly:
     m_Enabled: 1
     m_PositionOffset: 0
-    m_SearchRadius: 2
-    m_SearchResolution: 5
+    m_SearchRadius: 0
+    m_SearchResolution: 0
 --- !u!1 &1604937073270475771
 GameObject:
   m_ObjectHideFlags: 3
@@ -5038,7 +5054,7 @@ PrefabInstance:
     - target: {fileID: 5363258314993370275, guid: 5d714b31e95bfb94994b14f84a2d5665,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.514008
+      value: 96.09996
       objectReference: {fileID: 0}
     - target: {fileID: 5363258314993370275, guid: 5d714b31e95bfb94994b14f84a2d5665,
         type: 3}
@@ -5048,7 +5064,7 @@ PrefabInstance:
     - target: {fileID: 5363258314993370275, guid: 5d714b31e95bfb94994b14f84a2d5665,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 28.628536
+      value: 64.76003
       objectReference: {fileID: 0}
     - target: {fileID: 5363258314993370275, guid: 5d714b31e95bfb94994b14f84a2d5665,
         type: 3}

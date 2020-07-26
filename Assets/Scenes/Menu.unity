@@ -1195,7 +1195,7 @@ MonoBehaviour:
   min: {x: 0, y: 0}
   max: {x: 0, y: 0}
   yRotationRange: {x: -480, y: -500}
-  lerpSpeed: 0.055
+  lerpSpeed: 0.035
 --- !u!1 &652855205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2411,8 +2411,8 @@ MonoBehaviour:
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
   animate: 1
-  time: 0.5
-  delay: 2.5
+  time: 1
+  delay: 2
 --- !u!222 &1833128059
 CanvasRenderer:
   m_ObjectHideFlags: 0

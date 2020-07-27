@@ -1,15 +1,6 @@
 ﻿using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
 using TMPro;
-using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.Animations;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,13 +11,14 @@ public class GameManager : MonoBehaviour
     public static int TotalChance = 3;
     public int RemainingChance = TotalChance;
     public int ReachedCheckPoint = 0;
+    [Space]
+    public CinemachineVirtualCamera camera;
+    public GameObject dolytrack;
+    [Space]
     public GameObject Ninja;
-
     public TextMeshProUGUI Text_CheckPoint;
     public GameObject UX_RespawnNumber;
     public TextMeshProUGUI Text_ReachedCheckPoint;
-    public CinemachineStateDrivenCamera camera;
-    public GameObject dolytrack;
 
     public bool IsRespawned = false;
 
@@ -60,8 +52,7 @@ public class GameManager : MonoBehaviour
     public void Respawn()
     {
         IsRespawned = true;
-        Destroy(GameObject.FindGameObjectWithTag("Player")); 
-        camera.transform.GetChild(1).gameObject.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTrackedDolly>().m_PathPosition = CameraLastPathWay;
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
         SpawnPlayer(PlayerLastCheckPoint);
 
         switch (RemainingChance)
@@ -90,6 +81,5 @@ public class GameManager : MonoBehaviour
     {
         camera.Follow = ninja.transform;
         camera.LookAt = ninja.transform; 
-        camera.m_AnimatedTarget = ninja.GetComponentInChildren<Animator>();
     }
 }

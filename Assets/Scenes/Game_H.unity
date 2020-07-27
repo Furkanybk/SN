@@ -1290,6 +1290,7 @@ MonoBehaviour:
   PauseMenuUI: {fileID: 1989734480}
   DeadMenuUI: {fileID: 1684233033}
   PauseButton: {fileID: 1454000782}
+  X_Ninja_Head: {fileID: 0}
 --- !u!1 &688721337
 GameObject:
   m_ObjectHideFlags: 0

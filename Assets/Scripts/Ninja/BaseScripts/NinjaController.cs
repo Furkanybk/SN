@@ -60,24 +60,20 @@ public class NinjaController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionStay(Collision collision)
     {
-        if (IsSlideArea && other.gameObject.GetComponent<CheckPointManager>())
+        if (IsSlideArea && collision.gameObject.GetComponent<CheckPointManager>())
         {
             Debug.Log("Not Sliding.");
             IsSlideArea = false;
             return;
         }
-        else if (!IsSlideArea && other.gameObject.CompareTag("SlideArea"))
+        else if (!IsSlideArea && collision.gameObject.CompareTag("SlideArea"))
         {
             Debug.Log("Sliding.");
             IsSlideArea = true;
             return;
         }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
     }
 
     private void FixedUpdate()

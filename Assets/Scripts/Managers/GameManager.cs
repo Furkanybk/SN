@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     public int RemainingChance = TotalChance;
     public int ReachedCheckPoint = 0;
     public GameObject Ninja;
-    public Sprite X_Ninja_Head; 
 
     public TextMeshProUGUI Text_CheckPoint;
     public GameObject UX_RespawnNumber;
@@ -78,9 +77,7 @@ public class GameManager : MonoBehaviour
                 break;
             default:
                 break;
-        } 
-        --RemainingChance; 
-        UX_RespawnNumber.transform.GetChild(0).gameObject.transform.GetChild(RemainingChance).GetComponent<Image>().sprite = X_Ninja_Head; 
+        }  
     }
 
     private void SpawnPlayer(Vector3 pos)

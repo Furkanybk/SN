@@ -16,7 +16,10 @@ public class GameMenu : MonoBehaviour
     public GameObject PauseButton;
      
     public static bool GameIsPaused = false;
-    public static bool PlayerIsDead = false; 
+    public static bool PlayerIsDead = false;
+
+
+    public Sprite X_Ninja_Head;
 
     private void Awake()
     {
@@ -75,9 +78,18 @@ public class GameMenu : MonoBehaviour
 
     public void Dead()
     {
+        GameManager.current.UX_RespawnNumber.transform.GetChild(0).gameObject.transform.GetChild(--GameManager.current.RemainingChance).GetComponent<Image>().sprite = X_Ninja_Head;
         DeadMenuUI.SetActive(true); 
         PauseButton.SetActive(false);
         PlayerIsDead = true;
+         
+        if (GameManager.current.RemainingChance == 0)
+        {
+            Debug.Log("Game over...");
+            DeadMenuUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = " You saved " + GameManager.current.ReachedCheckPoint + " checkpoınts";
+            DeadMenuUI.transform.GetChild(1).gameObject.SetActive(false);
+        }
+
     }
 
     public void Complete()
@@ -96,19 +108,15 @@ public class GameMenu : MonoBehaviour
             DeadMenuUI.SetActive(false);
             PlayerIsDead = false; 
             PauseButton.SetActive(true);
-        }
-        else
-        { 
-            Debug.Log("No more respawn...");
-            DeadMenuUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = " No more respawn you saved " + GameManager.current.ReachedCheckPoint + " checkpoınts";
-            DeadMenuUI.transform.GetChild(1).gameObject.SetActive(false);
-        }
+        } 
     }
 
     public void Restart()
     { 
         Debug.Log("Restarting game..."); 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        PlayerIsDead = false;
+        Resume();
     }
 
     public void LoadMenu()

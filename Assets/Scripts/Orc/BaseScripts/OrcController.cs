@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public enum T_Parameters
 {
@@ -35,7 +36,7 @@ public class OrcController : MonoBehaviour
         //gameObject.layer = 2;
 
         Speed = 3.5f;
-        runningSpeed = Speed * 1.75f;
+        runningSpeed = Speed * 2f;
         WaitTime = 1.75f;
         StartWaitTime = WaitTime;
 
@@ -171,6 +172,10 @@ public class OrcController : MonoBehaviour
                 stopAtack();
                 newMoveSpot();
             }
+            //if (collision.gameObject.CompareTag("Wall"))
+            //{
+            //    Idle = true;
+            //}
             //else if (!Idle && !Atacking && collision.gameObject.CompareTag("Orc"))
             //{
             //    newMoveSpot();
@@ -182,21 +187,43 @@ public class OrcController : MonoBehaviour
         }
     }
 
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    float DistanceBetweenOrcNinja;
+    //    Vector3 DistancetoWall;
+    //    if (other.gameObject.CompareTag("Player"))
+    //    {
+    //        DistanceBetweenOrcNinja = Vector3.Distance(this.transform.position, other.gameObject.transform.position);
+    //        DistancetoWall = (other.gameObject.transform.forward * 15f) + other.gameObject.transform.position;
+    //        //Debug.Log("Distance " + DistanceBetweenOrcNinja);
+    //        //Debug.Log("Forward " + DistancetoWall);
+    //        //Debug.DrawLine(other.gameObject.transform.position, this.transform.position, Color.blue, 15f);
+    //        //Debug.DrawLine(other.gameObject.transform.position, DistancetoWall, Color.red, 15f);
+    //        enemy = other.GetComponent<NinjaController>();
+    //        if (enemy)
+    //        {
+    //            if (enemy.IsSlideArea && enemy.touchingWall && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
+    //            {
+    //                newMoveSpot(DistancetoWall);
+    //            }
+    //        }
+    //    }
+    //}
     private void OnTriggerStay(Collider other)
-    {
+    { 
         if (other.gameObject != gameObject)
         {
             if (enemy == null && !GaveUp)
             {
                 enemy = other.GetComponent<NinjaController>();
-                if(enemy)
+                if (enemy)
                 {
                     if (enemy.IsSlideArea && enemy.touchingWall && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
                     {
                         //float chance = Random.Range(0f, 1f);
                         //if (chance < 0.005f)
                         //{
-                            startAtacking();
+                        startAtacking();
                         //}
                         //else
                         //{
@@ -209,7 +236,7 @@ public class OrcController : MonoBehaviour
                         GaveUp = false;
                     }
                 }
-                
+
             }
 
             if (!Idle && other.transform.Equals(MoveSpot))

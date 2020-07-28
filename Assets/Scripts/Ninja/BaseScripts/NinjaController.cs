@@ -30,7 +30,9 @@ public class NinjaController : MonoBehaviour
     [HideInInspector]
     public bool IsSlideArea;
     [HideInInspector]
-    public bool IsRespawnDone; 
+    public bool IsRespawnDone;
+    //[HideInInspector]
+    public bool touchingWall = false;
 
     private Rigidbody rigid;
     public Rigidbody RIGID_BODY
@@ -45,11 +47,18 @@ public class NinjaController : MonoBehaviour
         }
     }
 
+    private Vector3 velocity = Vector3.zero;
+    private Vector3 lastLocation = Vector3.zero;
+    public Vector3 getVelocity()
+    {
+        return RIGID_BODY.velocity;
+    }
+
     private void Start()
     {
         IsRespawnDone = false; 
         transform.position = GameManager.current.PlayerLastCheckPoint;
-    } 
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -58,6 +67,14 @@ public class NinjaController : MonoBehaviour
             Debug.Log("Died");
             animator.SetBool(TransitionParameters.Death.ToString(), true);
             return;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            touchingWall = false;
         }
     }
 
@@ -80,6 +97,17 @@ public class NinjaController : MonoBehaviour
             IsSlideArea = true;
             return;
         }
+
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            touchingWall = true;
+        }
+    }
+
+    private void Update()
+    {
+        velocity = transform.position - lastLocation;
+        lastLocation = transform.position;
     }
 
     private void FixedUpdate()

@@ -15,6 +15,7 @@ public class OrcController : MonoBehaviour
     [Space]
     public Transform MoveSpot;
     public float Speed = 3.5f;
+    public float runningSpeed;
     public float WaitTime = 1.75f;
     public float StartWaitTime;
     public float RandomizeRange = 0.5f;
@@ -26,7 +27,7 @@ public class OrcController : MonoBehaviour
     public bool Idle = true;
 
     [SerializeField]
-    private NinjaController enemy = null;
+    public NinjaController enemy = null;
     private bool GaveUp = false;
 
     public void Setup(Vector2 min, Vector2 max)
@@ -34,6 +35,7 @@ public class OrcController : MonoBehaviour
         //gameObject.layer = 2;
 
         Speed = 3.5f;
+        runningSpeed = Speed * 1.75f;
         WaitTime = 1.75f;
         StartWaitTime = WaitTime;
 
@@ -49,6 +51,7 @@ public class OrcController : MonoBehaviour
         //gameObject.layer = 2;
 
         Speed = speed;
+        runningSpeed = Speed * 1.75f;
         WaitTime = waitTime;
 
         Min = min;
@@ -89,8 +92,8 @@ public class OrcController : MonoBehaviour
             MoveSpot = Instantiate(MoveSpotAsset, transform.position, Quaternion.identity, transform.parent).transform;
             MoveSpot.name = name + " Move Spot";
         }
-
-        MoveSpot.position = spot;
+        Debug.Log(enemy.getVelocity());
+        MoveSpot.position = spot + enemy.getVelocity();
         WaitTime = 0;
     }
 
@@ -104,7 +107,7 @@ public class OrcController : MonoBehaviour
     private IEnumerator atackMove()
     {
         newMoveSpot(enemy.transform.position);
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForFixedUpdate();
         if (enemy)
         {
             StartCoroutine(atackMove());
@@ -163,6 +166,11 @@ public class OrcController : MonoBehaviour
                 Debug.Log("Killed.");
                 stopAtack();
             }
+            if (collision.gameObject.GetComponent<CheckPointManager>())
+            {
+                stopAtack();
+                newMoveSpot();
+            }
             //else if (!Idle && !Atacking && collision.gameObject.CompareTag("Orc"))
             //{
             //    newMoveSpot();
@@ -183,17 +191,17 @@ public class OrcController : MonoBehaviour
                 enemy = other.GetComponent<NinjaController>();
                 if(enemy)
                 {
-                    if (enemy.IsSlideArea && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
+                    if (enemy.IsSlideArea && enemy.touchingWall && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
                     {
-                        float chance = Random.Range(0f, 1f);
-                        if (chance < 0.005f)
-                        {
+                        //float chance = Random.Range(0f, 1f);
+                        //if (chance < 0.005f)
+                        //{
                             startAtacking();
-                        }
-                        else
-                        {
-                            enemy = null;
-                        }
+                        //}
+                        //else
+                        //{
+                        //    enemy = null;
+                        //}
                     }
                     else
                     {

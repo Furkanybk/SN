@@ -19,8 +19,10 @@ public class Running_Orc : StateMachineBehaviour
             animator.SetBool(T_Parameters.Running.ToString(), false);
             return;
         }
-
-        orc.transform.position = Vector3.MoveTowards(orc.transform.position, orc.MoveSpot.position, orc.Speed * Time.deltaTime);
+        if(!orc.enemy)
+            orc.transform.position = Vector3.MoveTowards(orc.transform.position, orc.MoveSpot.position, orc.Speed * Time.deltaTime);
+        else
+            orc.transform.position = Vector3.MoveTowards(orc.transform.position, orc.MoveSpot.position, orc.runningSpeed * Time.deltaTime);
         orc.transform.LookAt(orc.MoveSpot.transform);
         orc.transform.rotation = Quaternion.Euler(0, orc.transform.eulerAngles.y, 0);
     }

@@ -105,6 +105,19 @@ public class GameMenu : MonoBehaviour
         DeadMenuUI.transform.GetChild(1).gameObject.SetActive(false); 
     }
 
+    public void RespawnDebug()
+    {
+        if (GameManager.current.RemainingChance > 0)
+        {
+            GameManager.current.RemainingChance++;
+            Debug.Log("Respawning checkpoint...");
+            GameManager.current.Respawn();
+            DeadMenuUI.SetActive(false);
+            PauseButton.SetActive(true);
+            PlayerIsDead = false;
+        }
+    }
+
     public void RespawnCheckPoint()
     {
         if(GameManager.current.RemainingChance > 0)

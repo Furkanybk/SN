@@ -65,7 +65,7 @@ public class NinjaController : MonoBehaviour
     {
         if (IsSlideArea && collision.gameObject.GetComponent<CheckPointManager>())
         { 
-            Debug.Log("Not Sliding.");
+            //Debug.Log("Not Sliding.");
             IsSlideArea = false;
             return;
         }
@@ -76,7 +76,7 @@ public class NinjaController : MonoBehaviour
             {
                 animator.SetBool(TransitionParameters.Slide.ToString(), true);
             }
-            Debug.Log("Sliding.");
+            //Debug.Log("Sliding.");
             IsSlideArea = true;
             return;
         }

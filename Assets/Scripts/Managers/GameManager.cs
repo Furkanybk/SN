@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnPlayer(Vector3 pos)
     {
-        pos.y = 0.2f;
+        pos.y = 0.25f;
         GameObject ninja = Instantiate(Ninja, pos, Quaternion.identity);
         SetCamera(ninja);
     }

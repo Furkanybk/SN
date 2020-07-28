@@ -92,6 +92,12 @@ public class GameMenu : MonoBehaviour
 
     }
 
+    public void Debug_Dead()
+    {
+        Debug.Log("Died");
+        FindObjectOfType<NinjaController>().animator.SetBool(TransitionParameters.Death.ToString(), true);
+    }
+
     public void Complete()
     {
         DeadMenuUI.SetActive(true); 
@@ -105,9 +111,9 @@ public class GameMenu : MonoBehaviour
         { 
             Debug.Log("Respawning checkpoint...");
             GameManager.current.Respawn(); 
-            DeadMenuUI.SetActive(false);
-            PlayerIsDead = false; 
+            DeadMenuUI.SetActive(false); 
             PauseButton.SetActive(true);
+            PlayerIsDead = false; 
         } 
     }
 

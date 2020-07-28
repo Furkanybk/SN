@@ -10,7 +10,7 @@ public enum TransitionParameters
 {
     Sprint,
     Slide,
-    Death,
+    Death, 
 }
 public class NinjaController : MonoBehaviour
 {
@@ -29,6 +29,8 @@ public class NinjaController : MonoBehaviour
     public float horizontal = 0;
     [HideInInspector]
     public bool IsSlideArea;
+    [HideInInspector]
+    public bool IsRespawnDone;
 
     private GameManager gm;
 
@@ -47,6 +49,7 @@ public class NinjaController : MonoBehaviour
 
     private void Start()
     {
+        IsRespawnDone = false; 
         transform.position = GameManager.current.PlayerLastCheckPoint;
     } 
 
@@ -78,7 +81,7 @@ public class NinjaController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (animator.GetBool(TransitionParameters.Death.ToString())) return;
+        if (animator.GetBool(TransitionParameters.Death.ToString()) || !IsRespawnDone) return;
 
         vertical = SimpleInput.GetAxisRaw("Vertical");
         horizontal = SimpleInput.GetAxisRaw("Horizontal");

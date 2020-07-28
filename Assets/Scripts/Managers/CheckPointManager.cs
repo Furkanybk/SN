@@ -37,7 +37,9 @@ public class CheckPointManager : MonoBehaviour
                     {
                         IsCheckpointPassed = true;
                         GameManager.current.ReachedCheckPoint++;
+                        GameManager.current.PlayerLastCheckPoint = transform.position;
                     }
+
                     GameManager.current.Text_ReachedCheckPoint.text = "CheckPoint Saved : " + GameManager.current.ReachedCheckPoint;
 
                     if (collision.gameObject.transform.position.z != GameManager.current.PlayerLastCheckPoint.z)

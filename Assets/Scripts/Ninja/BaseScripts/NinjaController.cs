@@ -30,9 +30,7 @@ public class NinjaController : MonoBehaviour
     [HideInInspector]
     public bool IsSlideArea;
     [HideInInspector]
-    public bool IsRespawnDone;
-
-    private GameManager gm;
+    public bool IsRespawnDone; 
 
     private Rigidbody rigid;
     public Rigidbody RIGID_BODY
@@ -66,13 +64,18 @@ public class NinjaController : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         if (IsSlideArea && collision.gameObject.GetComponent<CheckPointManager>())
-        {
+        { 
             Debug.Log("Not Sliding.");
             IsSlideArea = false;
             return;
         }
         else if (!IsSlideArea && collision.gameObject.CompareTag("SlideArea"))
         {
+            //Sliding to Idle anim bug fixed
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName(TransitionParameters.Slide.ToString()))
+            {
+                animator.SetBool(TransitionParameters.Slide.ToString(), true);
+            }
             Debug.Log("Sliding.");
             IsSlideArea = true;
             return;

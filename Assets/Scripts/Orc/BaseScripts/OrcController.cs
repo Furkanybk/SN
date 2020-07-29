@@ -133,7 +133,7 @@ public class OrcController : MonoBehaviour
     {
         if (!enemy.IsSlideArea)
         {
-            //stopAtack();
+            stopAtack();
             return;
         }
 

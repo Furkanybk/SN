@@ -48,7 +48,7 @@ public class NinjaController : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     private Vector3 lastLocation = Vector3.zero;
     public Vector3 getVelocity()
-    {a
+    {
         return RIGID_BODY.velocity;
     }  
     private void Start()

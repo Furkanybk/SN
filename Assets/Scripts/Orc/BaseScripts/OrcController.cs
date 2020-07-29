@@ -65,7 +65,6 @@ public class OrcController : MonoBehaviour
         Max = max;
         minMoveDistance = 1;
 
-        attackType = AttackType.NULL;
         getRandomAttackType();
 
         newMoveSpot();
@@ -81,7 +80,6 @@ public class OrcController : MonoBehaviour
         Max = max;
         minMoveDistance = 1;
 
-        attackType = AttackType.NULL;
         getRandomAttackType();
 
         newMoveSpot();
@@ -89,6 +87,7 @@ public class OrcController : MonoBehaviour
 
     private void getRandomAttackType()
     {
+        attackType = AttackType.NULL;
         int num = Random.Range(0, 3);
         switch (num)
         {

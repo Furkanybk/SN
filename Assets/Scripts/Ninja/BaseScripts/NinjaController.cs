@@ -47,13 +47,6 @@ public class NinjaController : MonoBehaviour
         }
     }
 
-    private Vector3 velocity = Vector3.zero;
-    private Vector3 lastLocation = Vector3.zero;
-    public Vector3 getVelocity()
-    {
-        return RIGID_BODY.velocity;
-    }
-
     private void Start()
     {
         IsRespawnDone = false; 
@@ -102,12 +95,6 @@ public class NinjaController : MonoBehaviour
         {
             touchingWall = true;
         }
-    }
-
-    private void Update()
-    {
-        velocity = transform.position - lastLocation;
-        lastLocation = transform.position;
     }
 
     private void FixedUpdate()

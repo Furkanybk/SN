@@ -93,8 +93,7 @@ public class OrcController : MonoBehaviour
             MoveSpot = Instantiate(MoveSpotAsset, transform.position, Quaternion.identity, transform.parent).transform;
             MoveSpot.name = name + " Move Spot";
         }
-        Debug.Log(enemy.getVelocity());
-        MoveSpot.position = spot + enemy.getVelocity();
+        MoveSpot.position = spot;
         WaitTime = 0;
     }
 

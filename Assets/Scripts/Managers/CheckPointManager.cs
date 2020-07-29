@@ -1,9 +1,5 @@
-﻿using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections; 
+using UnityEngine; 
 
 public enum CheckPointType
 {
@@ -15,13 +11,14 @@ public enum CheckPointType
 public class CheckPointManager : MonoBehaviour
 {
     [SerializeField]
-    public CheckPointType type = CheckPointType.Checkpoint;
-
+    public CheckPointType type = CheckPointType.Checkpoint; 
     [SerializeField]
-    private bool IsCheckpointPassed = false;
+    private bool IsCheckpointPassed = false; 
+    private Vector3 CheckpointPos; 
 
     private void Start()
     {
+        CheckpointPos = transform.position;
         IsCheckpointPassed = false;
     }
 
@@ -33,12 +30,18 @@ public class CheckPointManager : MonoBehaviour
             IsCheckpointPassed = true;
             switch (type)
             {
-                case CheckPointType.Checkpoint:
+                case CheckPointType.Checkpoint: 
                     GameManager.current.ReachedCheckPoint++;
                     GameManager.current.lastCheckpoint = this;
-                    GameManager.current.Text_ReachedCheckPoint.text = "CheckPoint Saved : " + GameManager.current.ReachedCheckPoint;
+                    GameManager.current.Text_ReachedCheckPoint.text = "CheckPoint Saved : " + GameManager.current.ReachedCheckPoint; 
+                    if (!IsCheckpointPassed)
+                    {
+                        IsCheckpointPassed = true;
+                        GameManager.current.ReachedCheckPoint++;
+                        GameManager.current.PlayerLastCheckPoint = CheckpointPos;
+                    }
 
-                    //if (collision.gameObject.transform.position.z != GameManager.current.lastCheckpoint.z) // WHY ??
+                    GameManager.current.Text_ReachedCheckPoint.text = "CheckPoint Saved : " + GameManager.current.ReachedCheckPoint; 
                     switch (GameManager.current.ReachedCheckPoint)
                     {
                         case 1:
@@ -73,8 +76,8 @@ public class CheckPointManager : MonoBehaviour
                             break;
                         case 11:
                             GameManager.current.CheckPointInfo = "UNSTOPPABLE";
-                            break;
-                    }
+                            break; 
+                    }  
                     break;
                 case CheckPointType.Startpoint:
                     Debug.Log("START");

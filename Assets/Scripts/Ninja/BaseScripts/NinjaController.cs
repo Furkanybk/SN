@@ -13,25 +13,23 @@ public enum TransitionParameters
     Death, 
 }
 public class NinjaController : MonoBehaviour
-{
+{ 
     public Animator animator; 
-
+    [Space]
     [Range(1f, 10f)]
     public float Speed = 10f;
     [Range(0.01f, 1f)]
-    public float TurnSmoothTime = 0.685f;
-
-    private float TurnSmoothVelocity = 0; 
-
+    public float TurnSmoothTime = 0.685f; 
+    private float TurnSmoothVelocity = 0;  
     [HideInInspector]
     public float vertical = 0;
     [HideInInspector]
-    public float horizontal = 0;
+    public float horizontal = 0; 
     [HideInInspector]
     public bool IsSlideArea;
     [HideInInspector]
     public bool IsRespawnDone;
-    //[HideInInspector]
+    [HideInInspector]
     public bool touchingWall = false;
 
     private Rigidbody rigid;
@@ -46,11 +44,16 @@ public class NinjaController : MonoBehaviour
             return rigid;
         }
     }
-
+     
+    private Vector3 velocity = Vector3.zero;
+    private Vector3 lastLocation = Vector3.zero;
+    public Vector3 getVelocity()
+    {a
+        return RIGID_BODY.velocity;
+    }  
     private void Start()
     {
-        IsRespawnDone = false; 
-        //transform.position = GameManager.current.lastCheckpoint;
+        IsRespawnDone = false;  
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -122,12 +125,14 @@ public class NinjaController : MonoBehaviour
             if (direction.magnitude >= 0.1f)
             {
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref TurnSmoothVelocity, TurnSmoothTime / 5);
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                float angle = Mathf.SmoothDampAngle(gameObject.transform.eulerAngles.y, targetAngle, ref TurnSmoothVelocity, TurnSmoothTime / 5);
+
+                RIGID_BODY.MoveRotation(Quaternion.Euler(0f, angle, 0f)); 
 
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
                 RIGID_BODY.MovePosition(RIGID_BODY.position + moveDir.normalized * (Speed / 1.5f) * Time.fixedDeltaTime);
+                gameObject.transform.position += gameObject.transform.forward * Time.fixedDeltaTime * (Speed / 1.5f); 
             }
         }
         else
@@ -135,10 +140,10 @@ public class NinjaController : MonoBehaviour
             if (direction.magnitude >= 0.1f)
             {
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref TurnSmoothVelocity, TurnSmoothTime);
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                float angle = Mathf.SmoothDampAngle(gameObject.transform.eulerAngles.y, targetAngle, ref TurnSmoothVelocity, TurnSmoothTime);
+                this.gameObject.transform.rotation = Quaternion.Euler(0f, angle, 0f);
             }
-            transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+            gameObject.transform.Translate(Vector3.forward * Speed * Time.deltaTime);
         }
     } 
 }

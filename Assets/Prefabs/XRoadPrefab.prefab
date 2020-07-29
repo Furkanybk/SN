@@ -113,6 +113,7 @@ MonoBehaviour:
   OrcNumber: 2
   DivideNumber: 6
   Margin: 0.5
+  OrcAttackType: 1
 --- !u!1 &894215837753743875
 GameObject:
   m_ObjectHideFlags: 0

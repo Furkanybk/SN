@@ -17,28 +17,26 @@ public class OrcController : MonoBehaviour
 {
     #region Variables
 
-    public static bool debugging = false;
-    public Animator animator;
-    public GameObject MoveSpotAsset;
-    [Space]
-    public Transform MoveSpot;
-    public float Speed = 3.5f;
-    public float runningSpeed;
-    public float WaitTime = 1.75f;
-    public float StartWaitTime;
-    public float RandomizeRange = 0.5f;
-    [Space]
-    private Vector2 Min = Vector2.zero;
-    private Vector2 Max = Vector2.zero;
-    public float minMoveDistance = 1;
+    [Header("Constant Variables")]
+    [SerializeField] public Animator animator;
+    [SerializeField] public GameObject MoveSpotAsset;
+    [SerializeField] public Transform MoveSpot;
 
-    public bool Idle = true;
+    [Header("Movement Varibles")]
+    [SerializeField] public float Speed = 3.5f;
+    [HideInInspector] public float runningSpeed;
+    [SerializeField] public float WaitTime = 1.75f;
+    [HideInInspector] public float StartWaitTime;
+    [SerializeField] public float RandomizeRange = 0.5f;
+    [SerializeField] public float minMoveDistance = 1;
+    [HideInInspector] private Vector2 Min = Vector2.zero;
+    [HideInInspector] private Vector2 Max = Vector2.zero;
 
-    [SerializeField]
-    public NinjaController enemy = null;
-    private bool GaveUp = false;
-
-    public AttackType attackType; // 0 --> Force Attack, 1 --> Wall Attack
+    [Header("Debug Variables")]
+    [SerializeField] public bool Idle = true;
+    [SerializeField] public NinjaController enemy = null;
+    [SerializeField] private bool GaveUp = false;
+    [SerializeField] public AttackType attackType;
 
     private Rigidbody rigid;
     public Rigidbody RIGID_BODY
@@ -57,7 +55,7 @@ public class OrcController : MonoBehaviour
 
     #region Setup Codes
     public void Setup(Vector2 min, Vector2 max)
-    { 
+    {
         Speed = 3.5f;
         runningSpeed = Speed * 2f;
         WaitTime = 1.75f;
@@ -74,7 +72,7 @@ public class OrcController : MonoBehaviour
     }
 
     public void Setup(Vector2 min, Vector2 max, float speed, float waitTime)
-    { 
+    {
         Speed = speed;
         runningSpeed = Speed * 1.75f;
         WaitTime = waitTime;
@@ -152,8 +150,7 @@ public class OrcController : MonoBehaviour
     #region Direct Attack Codes
     private void startAtacking()
     {
-        if(debugging)
-            Debug.Log(gameObject.name + " is atacking.");
+        //Debug.Log(gameObject.name + " is atacking.");
         StartCoroutine(atackMove());
         StartCoroutine(giveUp());
     }
@@ -186,16 +183,14 @@ public class OrcController : MonoBehaviour
         yield return new WaitForSecondsRealtime(Random.Range(3, 4));
         if (!GaveUp)
         {
-            stopAtack(); 
-            if (debugging)
-                Debug.Log(gameObject.name + " gave up.");
+            stopAtack();
+            //Debug.Log(gameObject.name + " gave up.");
         }
         else
         {
             GaveUp = false;
 
-            if (debugging)
-                Debug.Log(gameObject.name + " can atack again.");
+            //Debug.Log(gameObject.name + " can atack again.");
         }
     }
     #endregion
@@ -210,11 +205,10 @@ public class OrcController : MonoBehaviour
             {
                 if (collision.gameObject.CompareTag("Player"))
                 {
-                    if (debugging)
-                        Debug.Log(gameObject.name + " killed the player.");
+                    //Debug.Log(gameObject.name + " killed the player.");
                     stopAtack();
                 }
-                
+
             }
             if (collision.gameObject.GetComponent<CheckPointManager>())
             {
@@ -228,7 +222,7 @@ public class OrcController : MonoBehaviour
                 enemy = null;
                 GaveUp = true;
                 StartCoroutine(giveUp());
-            } 
+            }
             if (!Idle && collision.gameObject.CompareTag("Orc"))
             {
                 newMoveSpot();
@@ -236,8 +230,7 @@ public class OrcController : MonoBehaviour
         }
         else
         {
-            if (debugging)
-                Debug.Log("Kendine Çarptı Manyak.");
+            //Debug.Log("Kendine Çarptı Manyak.");
         }
     }
 
@@ -285,8 +278,7 @@ public class OrcController : MonoBehaviour
                 if (enemy.IsSlideArea && enemy.touchingWall && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
                 {
                     newMoveSpot(DistancetoWall);
-                    if (debugging)
-                        Debug.Log(gameObject.name + " is wall atacking.");
+                    //Debug.Log(gameObject.name + " is wall atacking.");
                 }
             }
         }
@@ -295,7 +287,7 @@ public class OrcController : MonoBehaviour
     }
 
     private void OnTriggerStay(Collider other)
-    { 
+    {
         if (other.gameObject != gameObject)
         {
             #region [Direct Attack]

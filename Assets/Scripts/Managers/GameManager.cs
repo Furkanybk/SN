@@ -1,5 +1,4 @@
-﻿using Boo.Lang;
-using Cinemachine;
+﻿using Cinemachine;
 using TMPro;
 using UnityEngine;
 

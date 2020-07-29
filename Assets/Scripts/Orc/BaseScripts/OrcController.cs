@@ -31,10 +31,10 @@ public class OrcController : MonoBehaviour
     public NinjaController enemy = null;
     private bool GaveUp = false;
 
-    public void Setup(Vector2 min, Vector2 max)
-    {
-        //gameObject.layer = 2;
+    public int attacktype; // 0 --> Force Attack, 1 --> Wall Attack
 
+    public void Setup(Vector2 min, Vector2 max, int orcAttack)
+    { 
         Speed = 3.5f;
         runningSpeed = Speed * 2f;
         WaitTime = 1.75f;
@@ -44,13 +44,13 @@ public class OrcController : MonoBehaviour
         Max = max;
         minMoveDistance = 1;
 
+        attacktype = orcAttack;
+
         newMoveSpot();
     }
 
-    public void Setup(Vector2 min, Vector2 max, float speed, float waitTime)
-    {
-        //gameObject.layer = 2;
-
+    public void Setup(Vector2 min, Vector2 max, float speed, float waitTime, int orcAttack)
+    { 
         Speed = speed;
         runningSpeed = Speed * 1.75f;
         WaitTime = waitTime;
@@ -58,6 +58,8 @@ public class OrcController : MonoBehaviour
         Min = min;
         Max = max;
         minMoveDistance = 1;
+
+        attacktype = orcAttack;
 
         newMoveSpot();
     }
@@ -172,14 +174,16 @@ public class OrcController : MonoBehaviour
                 stopAtack();
                 newMoveSpot();
             }
-            //if (collision.gameObject.CompareTag("Wall"))
-            //{
-            //    Idle = true;
-            //}
-            //else if (!Idle && !Atacking && collision.gameObject.CompareTag("Orc"))
-            //{
-            //    newMoveSpot();
-            //}
+            #region Condition for WallAttack
+            if (collision.gameObject.CompareTag("Wall"))
+            {
+                Idle = true;
+            } 
+            #endregion
+            else if (!Idle && collision.gameObject.CompareTag("Orc"))
+            {
+                newMoveSpot();
+            }
         }
         else
         {
@@ -187,57 +191,53 @@ public class OrcController : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    float DistanceBetweenOrcNinja;
-    //    Vector3 DistancetoWall;
-    //    if (other.gameObject.CompareTag("Player"))
-    //    {
-    //        DistanceBetweenOrcNinja = Vector3.Distance(this.transform.position, other.gameObject.transform.position);
-    //        DistancetoWall = (other.gameObject.transform.forward * 15f) + other.gameObject.transform.position;
-    //        //Debug.Log("Distance " + DistanceBetweenOrcNinja);
-    //        //Debug.Log("Forward " + DistancetoWall);
-    //        //Debug.DrawLine(other.gameObject.transform.position, this.transform.position, Color.blue, 15f);
-    //        //Debug.DrawLine(other.gameObject.transform.position, DistancetoWall, Color.red, 15f);
-    //        enemy = other.GetComponent<NinjaController>();
-    //        if (enemy)
-    //        {
-    //            if (enemy.IsSlideArea && enemy.touchingWall && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
-    //            {
-    //                newMoveSpot(DistancetoWall);
-    //            }
-    //        }
-    //    }
-    //}
-    private void OnTriggerStay(Collider other)
-    { 
-        if (other.gameObject != gameObject)
+    private void OnTriggerEnter(Collider other)
+    {
+        #region WallAttack
+        if(attacktype == 1)
         {
-            if (enemy == null && !GaveUp)
+            Vector3 DistancetoWall;
+            if (other.gameObject.CompareTag("Player"))
             {
+                DistancetoWall = (other.gameObject.transform.forward * 15f) + other.gameObject.transform.position;
                 enemy = other.GetComponent<NinjaController>();
                 if (enemy)
                 {
                     if (enemy.IsSlideArea && enemy.touchingWall && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
                     {
-                        //float chance = Random.Range(0f, 1f);
-                        //if (chance < 0.005f)
-                        //{
-                        startAtacking();
-                        //}
-                        //else
-                        //{
-                        //    enemy = null;
-                        //}
-                    }
-                    else
-                    {
-                        enemy = null;
-                        GaveUp = false;
+                        newMoveSpot(DistancetoWall);
                     }
                 }
-
             }
+        } 
+        #endregion
+    }
+
+    private void OnTriggerStay(Collider other)
+    { 
+        if (other.gameObject != gameObject)
+        { 
+            #region ForceAttack
+            if (attacktype == 0)
+            {
+                if (enemy == null && !GaveUp)
+                {
+                    enemy = other.GetComponent<NinjaController>();
+                    if (enemy)
+                    {
+                        if (enemy.IsSlideArea && enemy.touchingWall && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
+                        {
+                            startAtacking();
+                        }
+                        else
+                        {
+                            enemy = null;
+                            GaveUp = false;
+                        }
+                    } 
+                }
+            } 
+            #endregion
 
             if (!Idle && other.transform.Equals(MoveSpot))
             {

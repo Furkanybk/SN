@@ -99,7 +99,7 @@ public class OrcController : MonoBehaviour
 
     private void startAtacking()
     {
-        Debug.Log("RAWRRR");
+        //Debug.Log("RAWRRR");
         StartCoroutine(atackMove());
         StartCoroutine(giveUp());
     }
@@ -133,12 +133,12 @@ public class OrcController : MonoBehaviour
         if(!GaveUp)
         {
             stopAtack();
-            Debug.Log("Gave Up.");
+            //Debug.Log("Gave Up.");
         }
         else
         {
             GaveUp = false;
-            Debug.Log("Can atack again.");
+            //Debug.Log("Can atack again.");
         }
     }
 
@@ -158,7 +158,6 @@ public class OrcController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //TODO : Yeni hedef konum Orc'un arkasında olacak.
         if (collision.gameObject != gameObject)
         {
             if (collision.gameObject.CompareTag("Player"))
@@ -212,31 +211,31 @@ public class OrcController : MonoBehaviour
     { 
         if (other.gameObject != gameObject)
         {
-            if (enemy == null && !GaveUp)
-            {
-                enemy = other.GetComponent<NinjaController>();
-                if (enemy)
-                {
-                    if (enemy.IsSlideArea && enemy.touchingWall && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
-                    {
-                        //float chance = Random.Range(0f, 1f);
-                        //if (chance < 0.005f)
-                        //{
-                        startAtacking();
-                        //}
-                        //else
-                        //{
-                        //    enemy = null;
-                        //}
-                    }
-                    else
-                    {
-                        enemy = null;
-                        GaveUp = false;
-                    }
-                }
+            //if (enemy == null && !GaveUp)
+            //{
+            //    enemy = other.GetComponent<NinjaController>();
+            //    if (enemy)
+            //    {
+            //        if (enemy.IsSlideArea && enemy.touchingWall && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
+            //        {
+            //            //float chance = Random.Range(0f, 1f);
+            //            //if (chance < 0.005f)
+            //            //{
+            //            startAtacking();
+            //            //}
+            //            //else
+            //            //{
+            //            //    enemy = null;
+            //            //}
+            //        }
+            //        else
+            //        {
+            //            enemy = null;
+            //            GaveUp = false;
+            //        }
+            //    }
 
-            }
+            //}
 
             if (!Idle && other.transform.Equals(MoveSpot))
             {

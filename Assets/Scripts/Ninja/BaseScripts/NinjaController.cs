@@ -50,7 +50,7 @@ public class NinjaController : MonoBehaviour
     private void Start()
     {
         IsRespawnDone = false; 
-        transform.position = GameManager.current.PlayerLastCheckPoint;
+        //transform.position = GameManager.current.lastCheckpoint;
     }
 
     private void OnCollisionEnter(Collision collision)

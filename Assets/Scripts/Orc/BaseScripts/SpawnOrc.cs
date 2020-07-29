@@ -29,8 +29,6 @@ public class SpawnOrc : MonoBehaviour
     [SerializeField] private float Margin = 0;
     private static int OrcCount = 0;
 
-    public int OrcAttackType;
-
     private void Awake()
     {
         parent = GameObject.Find("OrcSpawn").transform;
@@ -71,7 +69,7 @@ public class SpawnOrc : MonoBehaviour
                         obj.name = "Orc " + OrcCount++;
 
                         OrcController oc = obj.GetComponent<OrcController>();
-                        oc.Setup(new Vector2(pieceS, startZ), new Vector2(pieceE, endZ), OrcAttackType);
+                        oc.Setup(new Vector2(pieceS, startZ), new Vector2(pieceE, endZ));
                     }
                 }
                 break;
@@ -102,7 +100,7 @@ public class SpawnOrc : MonoBehaviour
                         obj.name = "Orc " + OrcCount++;
 
                         OrcController oc = obj.GetComponent<OrcController>();
-                        oc.Setup(new Vector2(startX, pieceS), new Vector2(endX, pieceE), OrcAttackType);
+                        oc.Setup(new Vector2(startX, pieceS), new Vector2(endX, pieceE));
                     }
                 }
                 break;

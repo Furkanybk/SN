@@ -1,16 +1,23 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public enum T_Parameters
 {
     Running, 
 }
 
+public enum AttackType
+{
+    NULL,
+    DirectAtack,
+    WallAttack,
+}
+
 public class OrcController : MonoBehaviour
 {
+    #region Variables
+
+    public static bool debugging = false;
     public Animator animator;
     public GameObject MoveSpotAsset;
     [Space]
@@ -31,9 +38,25 @@ public class OrcController : MonoBehaviour
     public NinjaController enemy = null;
     private bool GaveUp = false;
 
-    public int attacktype; // 0 --> Force Attack, 1 --> Wall Attack
+    public AttackType attackType; // 0 --> Force Attack, 1 --> Wall Attack
 
-    public void Setup(Vector2 min, Vector2 max, int orcAttack)
+    private Rigidbody rigid;
+    public Rigidbody RIGID_BODY
+    {
+        get
+        {
+            if (rigid == null)
+            {
+                rigid = GetComponent<Rigidbody>();
+            }
+            return rigid;
+        }
+    }
+
+    #endregion
+
+    #region Setup Codes
+    public void Setup(Vector2 min, Vector2 max)
     { 
         Speed = 3.5f;
         runningSpeed = Speed * 2f;
@@ -44,12 +67,13 @@ public class OrcController : MonoBehaviour
         Max = max;
         minMoveDistance = 1;
 
-        attacktype = orcAttack;
+        attackType = AttackType.NULL;
+        getRandomAttackType();
 
         newMoveSpot();
     }
 
-    public void Setup(Vector2 min, Vector2 max, float speed, float waitTime, int orcAttack)
+    public void Setup(Vector2 min, Vector2 max, float speed, float waitTime)
     { 
         Speed = speed;
         runningSpeed = Speed * 1.75f;
@@ -59,11 +83,34 @@ public class OrcController : MonoBehaviour
         Max = max;
         minMoveDistance = 1;
 
-        attacktype = orcAttack;
+        attackType = AttackType.NULL;
+        getRandomAttackType();
 
         newMoveSpot();
     }
 
+    private void getRandomAttackType()
+    {
+        int num = Random.Range(0, 3);
+        switch (num)
+        {
+            case 0:
+                attackType = AttackType.NULL;
+                break;
+            case 1:
+                attackType = AttackType.DirectAtack;
+                break;
+            case 2:
+                attackType = AttackType.WallAttack;
+                break;
+            default:
+                Debug.LogWarning("Randomize Error : " + num);
+                break;
+        }
+    }
+    #endregion
+
+    #region Move Spot Codes
     public void newMoveSpot()
     {
         WaitTime = Random.Range(StartWaitTime - RandomizeRange, StartWaitTime + RandomizeRange) / 2;
@@ -86,9 +133,11 @@ public class OrcController : MonoBehaviour
     {
         if (!enemy.IsSlideArea)
         {
-            stopAtack();
+            //stopAtack();
             return;
         }
+
+        WaitTime = Random.Range(StartWaitTime - RandomizeRange, StartWaitTime + RandomizeRange) / 2;
 
         if (MoveSpot == null)
         {
@@ -98,10 +147,13 @@ public class OrcController : MonoBehaviour
         MoveSpot.position = spot;
         WaitTime = 0;
     }
+    #endregion
 
+    #region Direct Attack Codes
     private void startAtacking()
     {
-        //Debug.Log("RAWRRR");
+        if(debugging)
+            Debug.Log(gameObject.name + " is atacking.");
         StartCoroutine(atackMove());
         StartCoroutine(giveUp());
     }
@@ -132,116 +184,122 @@ public class OrcController : MonoBehaviour
     private IEnumerator giveUp()
     {
         yield return new WaitForSecondsRealtime(Random.Range(3, 4));
-        if(!GaveUp)
+        if (!GaveUp)
         {
-            stopAtack();
-            //Debug.Log("Gave Up.");
+            stopAtack(); 
+            if (debugging)
+                Debug.Log(gameObject.name + " gave up.");
         }
         else
         {
             GaveUp = false;
-            //Debug.Log("Can atack again.");
+
+            if (debugging)
+                Debug.Log(gameObject.name + " can atack again.");
         }
     }
+    #endregion
 
-
-    private Rigidbody rigid;
-    public Rigidbody RIGID_BODY
-    {
-        get
-        {
-            if (rigid == null)
-            {
-                rigid = GetComponent<Rigidbody>();
-            }
-            return rigid;
-        }
-    }
+    #region Collision Trigger
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject != gameObject)
         {
-            if (collision.gameObject.CompareTag("Player"))
+            if (attackType == AttackType.DirectAtack)
             {
-                Debug.Log("Killed.");
-                stopAtack();
+                if (collision.gameObject.CompareTag("Player"))
+                {
+                    if (debugging)
+                        Debug.Log(gameObject.name + " killed the player.");
+                    stopAtack();
+                }
+                
             }
             if (collision.gameObject.GetComponent<CheckPointManager>())
             {
                 stopAtack();
                 newMoveSpot();
             }
-            #region Condition for WallAttack
             if (collision.gameObject.CompareTag("Wall"))
             {
                 Idle = true;
+                StopAllCoroutines();
+                enemy = null;
+                GaveUp = true;
+                StartCoroutine(giveUp());
             } 
-            #endregion
-            else if (!Idle && collision.gameObject.CompareTag("Orc"))
+            if (!Idle && collision.gameObject.CompareTag("Orc"))
             {
                 newMoveSpot();
             }
         }
         else
         {
-            Debug.Log("Kendine Çarptı Manyak.");
+            if (debugging)
+                Debug.Log("Kendine Çarptı Manyak.");
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        #region WallAttack
-        if(attacktype == 1)
-        {
-            if (enemy == null && !GaveUp)
-            {
-                enemy = other.GetComponent<NinjaController>();
-                if (enemy)
-                {
-                    if (enemy.IsSlideArea && enemy.touchingWall && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
-                    {
-                        //float chance = Random.Range(0f, 1f);
-                        //if (chance < 0.005f)
-                        //{
-                        startAtacking();
-                        //}
-                        //else
-                        //{
-                        //    enemy = null;
-                        //}
-                    }
-                    else
-                    {
-                        enemy = null;
-                        GaveUp = false;
-                    }
-                }
+        #region [Direct Attack] (commented)
+        //if (attackType == AttackType.DirectAtack)
+        //{
+        //    if (enemy == null && !GaveUp)
+        //    {
+        //        enemy = other.GetComponent<NinjaController>();
+        //        if (enemy)
+        //        {
+        //            if (enemy.IsSlideArea && enemy.touchingWall && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
+        //            {
+        //                //float chance = Random.Range(0f, 1f);
+        //                //if (chance < 0.005f)
+        //                //{
+        //                startAtacking();
+        //                //}
+        //                //else
+        //                //{
+        //                //    enemy = null;
+        //                //}
+        //            }
+        //            else
+        //            {
+        //                enemy = null;
+        //                GaveUp = false;
+        //            }
+        //        }
 
-            }
+        //    }
+        //}
+        #endregion
+
+        #region WallAttack
+        if (attackType == AttackType.WallAttack)
+        {
             Vector3 DistancetoWall;
-            if (other.gameObject.CompareTag("Player"))
+            enemy = other.GetComponent<NinjaController>();
+            if (enemy)
             {
                 DistancetoWall = (other.gameObject.transform.forward * 15f) + other.gameObject.transform.position;
-                enemy = other.GetComponent<NinjaController>();
-                if (enemy)
+                if (enemy.IsSlideArea && enemy.touchingWall && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
                 {
-                    if (enemy.IsSlideArea && enemy.touchingWall && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
-                    {
-                        newMoveSpot(DistancetoWall);
-                    }
+                    newMoveSpot(DistancetoWall);
+                    if (debugging)
+                        Debug.Log(gameObject.name + " is wall atacking.");
                 }
             }
-        } 
+        }
         #endregion
+
     }
 
     private void OnTriggerStay(Collider other)
     { 
         if (other.gameObject != gameObject)
-        { 
-            #region ForceAttack
-            if (attacktype == 0)
+        {
+            #region [Direct Attack]
+            if (attackType == AttackType.DirectAtack)
             {
                 if (enemy == null && !GaveUp)
                 {
@@ -257,10 +315,10 @@ public class OrcController : MonoBehaviour
                             enemy = null;
                             GaveUp = false;
                         }
-                    } 
+                    }
                 }
-            } 
-            #endregion 
+            }
+            #endregion
 
             if (!Idle && other.transform.Equals(MoveSpot))
             {
@@ -268,4 +326,6 @@ public class OrcController : MonoBehaviour
             }
         }
     }
+
+    #endregion
 }

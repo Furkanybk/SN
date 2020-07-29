@@ -78,7 +78,7 @@ public class GameMenu : MonoBehaviour
 
     public void Dead()
     {
-        if(GameManager.current.RemainingChance < 3)
+        if(GameManager.current.RemainingChance <= 3)
             GameManager.current.UX_RespawnNumber.transform.GetChild(0).gameObject.transform.GetChild(--GameManager.current.RemainingChance).GetComponent<Image>().sprite = X_Ninja_Head;
         DeadMenuUI.SetActive(true); 
         PauseButton.SetActive(false);

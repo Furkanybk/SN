@@ -96,10 +96,10 @@ public class OrcController : MonoBehaviour
                 attackType = AttackType.NULL;
                 break;
             case 1:
-                attackType = AttackType.DirectAtack;
+                //attackType = AttackType.DirectAtack;
                 break;
             case 2:
-                attackType = AttackType.WallAttack;
+                //attackType = AttackType.WallAttack;
                 break;
             default:
                 Debug.LogWarning("Randomize Error : " + num);

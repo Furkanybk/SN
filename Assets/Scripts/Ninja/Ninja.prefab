@@ -9,10 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7491069252528998163}
+  - component: {fileID: 7491069252528998160}
   - component: {fileID: 983995928}
-  - component: {fileID: 3350700224577004863}
   - component: {fileID: 5192676493825949851}
   - component: {fileID: 5192676493825949850}
+  - component: {fileID: 3350700224577004863}
+  - component: {fileID: 308563554}
   - component: {fileID: 3023614003915256674}
   m_Layer: 0
   m_Name: Ninja
@@ -36,6 +38,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7491069252528998160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491069252528998167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae29da75ab71974e84132e9a719fd35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &983995928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,19 +70,6 @@ MonoBehaviour:
   IsSlideArea: 0
   IsRespawnDone: 0
   touchingWall: 0
---- !u!114 &3350700224577004863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7491069252528998167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62ab3a915de6d5e43a00c36a7516fca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: aed13eda1599f0246b28f346fdfa6950, type: 2}
 --- !u!54 &5192676493825949851
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -99,6 +100,34 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &3350700224577004863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491069252528998167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ab3a915de6d5e43a00c36a7516fca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 537b163853e18f44798089613c6f4bfa, type: 2}
+--- !u!114 &308563554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491069252528998167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6beceecd334a4784ab460b4f62250892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColliderEdgePrefab: {fileID: 9015758520063463940, guid: 3547a07960c1bb3419a0815e4ae47df8,
+    type: 3}
+  BottomSpheres: []
 --- !u!135 &3023614003915256674
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -119,11 +148,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7491069252528998163}
     m_Modifications:
-    - target: {fileID: -9034261836433992389, guid: c1ae1766fc1e58741826b84a646e43ee,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: aed13eda1599f0246b28f346fdfa6950, type: 2}
     - target: {fileID: -8679921383154817045, guid: c1ae1766fc1e58741826b84a646e43ee,
         type: 3}
       propertyPath: m_LocalPosition.x

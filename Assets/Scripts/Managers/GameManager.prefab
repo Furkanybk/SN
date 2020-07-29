@@ -43,10 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ed7e6174b38b14385699182aa89207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RemainingChance: 3
   PlayerLastCheckPoint: {x: 0, y: 0, z: 0}
+  CameraLastPathWay: 0
+  RemainingChance: 3
   ReachedCheckPoint: 0
   camera: {fileID: 0}
+  dolytrack: {fileID: 0}
   Ninja: {fileID: 7491069252528998167, guid: c3884fbb24ed32644903c307634639c3, type: 3}
   Text_CheckPoint: {fileID: 0}
   UX_RespawnNumber: {fileID: 0}

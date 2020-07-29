@@ -1,35 +1,35 @@
-﻿using Boo.Lang;
-using Cinemachine;
+﻿using Cinemachine;
 using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager current = null;
-     
+
     public Vector3 PlayerLastCheckPoint;
+    public float CameraLastPathWay;
     public static int TotalChance = 3;
-    public int RemainingChance = TotalChance; 
+    public int RemainingChance = TotalChance;
     public int ReachedCheckPoint = 0;
-    [Space] 
-    public CinemachineVirtualCamera camera; 
+    [Space]
+    public CinemachineVirtualCamera camera;
+    public GameObject dolytrack;
     [Space]
     public GameObject Ninja;
-    [Space]
     public TextMeshProUGUI Text_CheckPoint;
     public GameObject UX_RespawnNumber;
     public TextMeshProUGUI Text_ReachedCheckPoint;
 
-    [HideInInspector]
     public bool IsRespawned = false;
 
     [HideInInspector]
-    public string CheckPointInfo;
+    public string CheckPointInfo = "Welcome Ninja Slide";
 
     private void Awake()
-    {  
-        if (current != null)
-        { 
+    {
+        if(current != null)
+        {
+            //Destroy(current);
             Debug.Log("Already a GameManager Working.");
         }
         else
@@ -57,12 +57,15 @@ public class GameManager : MonoBehaviour
 
         switch (RemainingChance)
         { 
-            case 0:
+            case 1:
                 CheckPointInfo = "LAST CHANCE";
                 break;
-            case 1:
+            case 2:
                 CheckPointInfo = "WATCH OUT";
-                break; 
+                break;
+            case 3:
+                CheckPointInfo = "OOPS";
+                break;
             default:
                 break;
         }  
@@ -72,7 +75,6 @@ public class GameManager : MonoBehaviour
     {
         pos.y = 0.25f;
         GameObject ninja = Instantiate(Ninja, pos, Quaternion.identity);
-        ninja.transform.position = pos;
         SetCamera(ninja);
     }
     private void SetCamera(GameObject ninja)
@@ -80,4 +82,4 @@ public class GameManager : MonoBehaviour
         camera.Follow = ninja.transform;
         camera.LookAt = ninja.transform; 
     }
-} 
+}

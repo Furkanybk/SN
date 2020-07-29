@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Sprint : StateMachineBehaviour
-{ 
+{
+    //Old Variables
+    //public float Speed = 2f;
+    //public float TurnSmoothTime = 0.1f;
+    //float TurnSmoothVelocity;
+
     private NinjaController ninja;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -13,7 +18,7 @@ public class Sprint : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (ninja.vertical == 0 && ninja.horizontal == 0)
+        if (ninja.vertical == 0 && ninja.horizontal == 0/*!ninja.W && !ninja.A && !ninja.S && !ninja.D*/)
         {
             animator.SetBool(TransitionParameters.Sprint.ToString(), false);
             return;
@@ -25,7 +30,27 @@ public class Sprint : StateMachineBehaviour
             return;
         }
 
-    } 
+    }
+
+    //Old Controlls
+    //float vertical = Input.GetAxisRaw("Vertical");
+    //float horizontal = Input.GetAxisRaw("Horizontal");
+    //Debug.Log(vertical + " " + horizontal);
+
+
+    //Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+    //if (direction.magnitude >= 0.1f)
+    //{
+    //    float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+    //    float angle = Mathf.SmoothDampAngle(ninja.transform.eulerAngles.y, targetAngle, ref TurnSmoothVelocity, TurnSmoothTime);
+    //    ninja.transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+    //    Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+    //    ninja.RIGID_BODY.MovePosition(ninja.RIGID_BODY.position + moveDir.normalized * Speed * Time.fixedDeltaTime);
+    //}
+
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 

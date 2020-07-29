@@ -29,37 +29,33 @@ public class SpawnOrc : MonoBehaviour
     [SerializeField] private float Margin = 0;
     private static int OrcCount = 0;
 
-    public int OrcAttackType;
-
     private void Awake()
     {
         parent = GameObject.Find("OrcSpawn").transform;
-        float pieceS, pieceE;
+
         float ScaleX = transform.lossyScale.x - Margin * 2;
         float ScaleZ = transform.lossyScale.z - Margin * 2;
 
         float startZ = transform.position.z - ScaleZ / 2;
         float endZ = transform.position.z + ScaleZ / 2;
         float startX = transform.position.x - ScaleX / 2;
-        float endX = transform.position.x + ScaleX / 2; 
-
+        float endX = transform.position.x + ScaleX / 2;
+         
         switch (DivideAxis)
         {
             case DivideAxis.X:
                 for (int j = 0; j < DivideNumber; j++)
                 {
-                    pieceS = startX + ScaleX / DivideNumber * j;
-                    pieceE = startX + ScaleX / DivideNumber * (j + 1);
+                    float pieceS = startX + ScaleX / DivideNumber * j;
+                    float pieceE = startX + ScaleX / DivideNumber * (j + 1);
 
-                    #region Debug
-                    //Debug.DrawLine(new Vector3(pieceS, transform.position.y, transform.position.z), new Vector3(pieceS, transform.position.y + 5, transform.position.z), Color.red, 100);
-                    //Debug.DrawLine(new Vector3(pieceE, transform.position.y, transform.position.z), new Vector3(pieceE, transform.position.y + 5, transform.position.z), Color.red, 100);
+                    Debug.DrawLine(new Vector3(pieceS, transform.position.y, transform.position.z), new Vector3(pieceS, transform.position.y + 5, transform.position.z), Color.red, 100);
+                    Debug.DrawLine(new Vector3(pieceE, transform.position.y, transform.position.z), new Vector3(pieceE, transform.position.y + 5, transform.position.z), Color.red, 100);
 
-                    //Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, startZ), new Vector3(transform.position.x, transform.position.y + 5, startZ), Color.red, 100);
-                    //Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, endZ), new Vector3(transform.position.x, transform.position.y + 5, endZ), Color.red, 100); 
-                     
+                    Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, startZ), new Vector3(transform.position.x, transform.position.y + 5, startZ), Color.red, 100);
+                    Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, endZ), new Vector3(transform.position.x, transform.position.y + 5, endZ), Color.red, 100);
+
                     //Debug.Log("PieceS:" + pieceS + " PieceE: " + pieceE);
-                    #endregion 
 
                     for (int i = 0; i < OrcNumber; i++)
                     {
@@ -71,26 +67,24 @@ public class SpawnOrc : MonoBehaviour
                         obj.name = "Orc " + OrcCount++;
 
                         OrcController oc = obj.GetComponent<OrcController>();
-                        oc.Setup(new Vector2(pieceS, startZ), new Vector2(pieceE, endZ), OrcAttackType);
+                        oc.Setup(new Vector2(pieceS, startZ), new Vector2(pieceE, endZ));
                     }
                 }
                 break;
             case DivideAxis.Z:
                 for (int j = 0; j < DivideNumber; j++)
                 {
-                    pieceS = startZ + ScaleZ / DivideNumber * j;
-                    pieceE = startZ + ScaleZ / DivideNumber * (j+1);
+                    float pieceS = startZ + ScaleZ / DivideNumber * j;
+                    float pieceE = startZ + ScaleZ / DivideNumber * (j+1);
 
-                    #region Debug
-                    //Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, pieceS), new Vector3(transform.position.x, transform.position.y + 5, pieceS), Color.red, 100);
-                    //Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, pieceE), new Vector3(transform.position.x, transform.position.y + 5, pieceE), Color.red, 100);
+                    Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, pieceS), new Vector3(transform.position.x, transform.position.y + 5, pieceS), Color.red, 100);
+                    Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, pieceE), new Vector3(transform.position.x, transform.position.y + 5, pieceE), Color.red, 100);
 
 
-                    //Debug.DrawLine(new Vector3(startX, transform.position.y, transform.position.z), new Vector3(startX, transform.position.y + 5, transform.position.z), Color.red, 100);
-                    //Debug.DrawLine(new Vector3(endX, transform.position.y, transform.position.z), new Vector3(endX, transform.position.y + 5, transform.position.z), Color.red, 100);
+                    Debug.DrawLine(new Vector3(startX, transform.position.y, transform.position.z), new Vector3(startX, transform.position.y + 5, transform.position.z), Color.red, 100);
+                    Debug.DrawLine(new Vector3(endX, transform.position.y, transform.position.z), new Vector3(endX, transform.position.y + 5, transform.position.z), Color.red, 100);
 
-                    //Debug.Log("PieceS:" + pieceS + " PieceE: " + pieceE); 
-                    #endregion
+                    //Debug.Log("PieceS:" + pieceS + " PieceE: " + pieceE);
 
                     for (int i = 0; i < OrcNumber; i++)
                     {
@@ -102,7 +96,7 @@ public class SpawnOrc : MonoBehaviour
                         obj.name = "Orc " + OrcCount++;
 
                         OrcController oc = obj.GetComponent<OrcController>();
-                        oc.Setup(new Vector2(startX, pieceS), new Vector2(endX, pieceE), OrcAttackType);
+                        oc.Setup(new Vector2(startX, pieceS), new Vector2(endX, pieceE));
                     }
                 }
                 break;

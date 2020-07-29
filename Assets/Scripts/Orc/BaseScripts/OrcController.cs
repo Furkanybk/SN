@@ -34,12 +34,12 @@ public class OrcController : MonoBehaviour
 
     [Header("Debug Variables")]
     [SerializeField] public bool Idle = true;
-    [SerializeField] public NinjaController enemy = null;
     [SerializeField] private bool GaveUp = false;
+    [SerializeField] public NinjaController enemy = null;
     [SerializeField] public AttackType attackType;
 
     private Rigidbody rigid;
-    public Rigidbody RIGID_BODY
+    public Rigidbody RIGID_BODY 
     {
         get
         {

@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager current = null;
 
-    public Vector3 PlayerLastCheckPoint;
+    public CheckPointManager lastCheckpoint;
     public float CameraLastPathWay;
     public static int TotalChance = 3;
     public int RemainingChance = TotalChance;
@@ -53,7 +53,10 @@ public class GameManager : MonoBehaviour
     {
         IsRespawned = true;
         Destroy(GameObject.FindGameObjectWithTag("Player"));
-        SpawnPlayer(PlayerLastCheckPoint);
+        if (lastCheckpoint)
+            SpawnPlayer(lastCheckpoint.transform.position);
+        else
+            SpawnPlayer(Vector3.zero);
 
         switch (RemainingChance)
         { 
@@ -73,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnPlayer(Vector3 pos)
     {
-        pos.y = 0.25f;
+        pos.y += 0.25f;
         GameObject ninja = Instantiate(Ninja, pos, Quaternion.identity);
         SetCamera(ninja);
     }

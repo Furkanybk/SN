@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5192676493825949851}
   - component: {fileID: 5192676493825949850}
   - component: {fileID: 3350700224577004863}
-  - component: {fileID: 308563554}
   - component: {fileID: 3023614003915256674}
+  - component: {fileID: 8638694063669378881}
   m_Layer: 0
   m_Name: Ninja
   m_TagString: Player
@@ -113,21 +113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 537b163853e18f44798089613c6f4bfa, type: 2}
---- !u!114 &308563554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7491069252528998167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6beceecd334a4784ab460b4f62250892, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ColliderEdgePrefab: {fileID: 9015758520063463940, guid: 3547a07960c1bb3419a0815e4ae47df8,
-    type: 3}
-  BottomSpheres: []
 --- !u!135 &3023614003915256674
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -141,6 +126,27 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 15
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &8638694063669378881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491069252528998167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6beceecd334a4784ab460b4f62250892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColliderEdgePrefab: {fileID: 9015758520063463940, guid: 3547a07960c1bb3419a0815e4ae47df8,
+    type: 3}
+  BottomSpheres:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &6398408331256665714
 PrefabInstance:
   m_ObjectHideFlags: 0

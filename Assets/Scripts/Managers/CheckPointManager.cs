@@ -30,65 +30,56 @@ public class CheckPointManager : MonoBehaviour
         if (IsCheckpointPassed) return;
         if (collision.gameObject.CompareTag("Player"))
         {
+            IsCheckpointPassed = true;
             switch (type)
             {
                 case CheckPointType.Checkpoint:
-                    if (!IsCheckpointPassed)
-                    {
-                        IsCheckpointPassed = true;
-                        GameManager.current.ReachedCheckPoint++;
-                        GameManager.current.PlayerLastCheckPoint = transform.position;
-                    }
-
+                    GameManager.current.ReachedCheckPoint++;
+                    GameManager.current.lastCheckpoint = this;
                     GameManager.current.Text_ReachedCheckPoint.text = "CheckPoint Saved : " + GameManager.current.ReachedCheckPoint;
 
-                    if (collision.gameObject.transform.position.z != GameManager.current.PlayerLastCheckPoint.z)
+                    //if (collision.gameObject.transform.position.z != GameManager.current.lastCheckpoint.z) // WHY ??
+                    switch (GameManager.current.ReachedCheckPoint)
                     {
-                        switch (GameManager.current.ReachedCheckPoint)
-                        {
-                            case 1:
-                                GameManager.current.CheckPointInfo = "NICE";
-                                break;
-                            case 2:
-                                GameManager.current.CheckPointInfo = "GOOD";
-                                break;
-                            case 3:
-                                GameManager.current.CheckPointInfo = "YOU GOT THIS";
-                                break;
-                            case 4:
-                                GameManager.current.CheckPointInfo = "WOW";
-                                break;
-                            case 5:
-                                GameManager.current.CheckPointInfo = "PERFECT";
-                                break;
-                            case 6:
-                                GameManager.current.CheckPointInfo = "GOOD SLIDE";
-                                break;
-                            case 7:
-                                GameManager.current.CheckPointInfo = "AGILE";
-                                break;
-                            case 8:
-                                GameManager.current.CheckPointInfo = "WHAT A MOVEMENT";
-                                break;
-                            case 9:
-                                GameManager.current.CheckPointInfo = "PERFECT SLIDE";
-                                break;
-                            case 10:
-                                GameManager.current.CheckPointInfo = "ALMOST DONE";
-                                break;
-                            case 11:
-                                GameManager.current.CheckPointInfo = "UNSTOPPABLE";
-                                break;
-                        }
+                        case 1:
+                            GameManager.current.CheckPointInfo = "NICE";
+                            break;
+                        case 2:
+                            GameManager.current.CheckPointInfo = "GOOD";
+                            break;
+                        case 3:
+                            GameManager.current.CheckPointInfo = "YOU GOT THIS";
+                            break;
+                        case 4:
+                            GameManager.current.CheckPointInfo = "WOW";
+                            break;
+                        case 5:
+                            GameManager.current.CheckPointInfo = "PERFECT";
+                            break;
+                        case 6:
+                            GameManager.current.CheckPointInfo = "GOOD SLIDE";
+                            break;
+                        case 7:
+                            GameManager.current.CheckPointInfo = "AGILE";
+                            break;
+                        case 8:
+                            GameManager.current.CheckPointInfo = "WHAT A MOVEMENT";
+                            break;
+                        case 9:
+                            GameManager.current.CheckPointInfo = "PERFECT SLIDE";
+                            break;
+                        case 10:
+                            GameManager.current.CheckPointInfo = "ALMOST DONE";
+                            break;
+                        case 11:
+                            GameManager.current.CheckPointInfo = "UNSTOPPABLE";
+                            break;
                     }
                     break;
                 case CheckPointType.Startpoint:
+                    Debug.Log("START");
                     break;
                 case CheckPointType.Endpoint:
-                    if (!IsCheckpointPassed)
-                    {
-                        IsCheckpointPassed = true;
-                    }
                     GameMenu.current.Complete();
                     break;
             }

@@ -95,10 +95,10 @@ public class OrcController : MonoBehaviour
                 attackType = AttackType.NULL;
                 break;
             case 1:
-                //attackType = AttackType.DirectAtack;
+                attackType = AttackType.DirectAtack;
                 break;
             case 2:
-                //attackType = AttackType.WallAttack;
+                attackType = AttackType.WallAttack;
                 break;
             default:
                 Debug.LogWarning("Randomize Error : " + num);
@@ -216,6 +216,7 @@ public class OrcController : MonoBehaviour
             }
             if (collision.gameObject.CompareTag("Wall"))
             {
+                WaitTime = Random.Range(StartWaitTime - RandomizeRange, StartWaitTime + RandomizeRange) / 2;
                 Idle = true;
                 StopAllCoroutines();
                 enemy = null;
@@ -273,11 +274,17 @@ public class OrcController : MonoBehaviour
             enemy = other.GetComponent<NinjaController>();
             if (enemy)
             {
-                DistancetoWall = (other.gameObject.transform.forward * 15f) + other.gameObject.transform.position;
                 if (enemy.IsSlideArea && enemy.touchingWall && !enemy.animator.GetBool(TransitionParameters.Death.ToString()))
                 {
+                    DistancetoWall = (other.gameObject.transform.forward * 15f) + other.gameObject.transform.position;
                     newMoveSpot(DistancetoWall);
                     //Debug.Log(gameObject.name + " is wall atacking.");
+                }
+                else
+                {
+                    enemy = null;
+                    GaveUp = false;
+                    StopAllCoroutines();
                 }
             }
         }
@@ -305,6 +312,7 @@ public class OrcController : MonoBehaviour
                         {
                             enemy = null;
                             GaveUp = false;
+                            StopAllCoroutines();
                         }
                     }
                 }

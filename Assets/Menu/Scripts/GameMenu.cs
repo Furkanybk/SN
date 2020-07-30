@@ -87,8 +87,9 @@ public class GameMenu : MonoBehaviour
         if (GameManager.current.RemainingChance == 0)
         {
             Debug.Log("Game over...");
-            DeadMenuUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = " You saved " + GameManager.current.ReachedCheckPoint + " checkpoınts";
+            DeadMenuUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = " You saved " + GameManager.current.ReachedCheckPoint + " checkpoints";
             DeadMenuUI.transform.GetChild(1).gameObject.SetActive(false);
+            DeadMenuUI.transform.GetChild(2).gameObject.SetActive(true);
         }
 
     }

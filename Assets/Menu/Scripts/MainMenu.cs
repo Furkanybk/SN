@@ -40,13 +40,13 @@ public class MainMenu : MonoBehaviour
 
         if (toggle)
         {
-            Buttons[3].transform.GetChild(0).GetComponent<Image>().sprite = Sprites[0];
+            Buttons[4].transform.GetChild(0).GetComponent<Image>().sprite = Sprites[0];
             AudioListener.volume = 1f;
         }
 
         else
         {
-            Buttons[3].transform.GetChild(0).GetComponent<Image>().sprite = Sprites[1];
+            Buttons[4].transform.GetChild(0).GetComponent<Image>().sprite = Sprites[1];
             AudioListener.volume = 0f;
         }
     }

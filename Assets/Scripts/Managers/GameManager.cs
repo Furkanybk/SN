@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -62,15 +63,18 @@ public class GameManager : MonoBehaviour
 
         switch (RemainingChance)
         { 
-            case 0:
+            case 1:
                 CheckPointInfo = "LAST CHANCE";
                 break;
-            case 1:
+            case 2:
                 CheckPointInfo = "WATCH OUT";
                 break; 
             default:
                 break;
-        }  
+        } 
+        Text_CheckPoint.enabled = true;
+        Text_CheckPoint.text = CheckPointInfo;
+        StartCoroutine(closeText(1.5f));
     }
 
     private void SpawnPlayer(Vector3 pos)
@@ -84,5 +88,10 @@ public class GameManager : MonoBehaviour
     {
         camera.Follow = ninja.transform;
         camera.LookAt = ninja.transform; 
+    } 
+    private IEnumerator closeText(float time)
+    {
+        yield return new WaitForSeconds(time);
+        GameManager.current.Text_CheckPoint.enabled = false;
     }
 } 

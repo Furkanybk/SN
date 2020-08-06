@@ -1,7 +1,11 @@
 ﻿using Cinemachine;
+using System;
 using System.Collections;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,12 +26,23 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI Text_CheckPoint;
     public GameObject UX_RespawnNumber;
     public TextMeshProUGUI Text_ReachedCheckPoint;
+    public TextMeshProUGUI Text_Timer;
 
     [HideInInspector]
     public bool IsRespawned = false;
 
     [HideInInspector]
     public string CheckPointInfo;
+
+    [HideInInspector]
+    public Stopwatch Timer = new Stopwatch();
+
+    [HideInInspector]
+    public bool IsPlayerStart = false; 
+
+    [HideInInspector]
+    public bool IsGameFinish = false;  
+
 
     private void Awake()
     {  
@@ -50,6 +65,19 @@ public class GameManager : MonoBehaviour
     private void Start()
     {  
         SpawnPlayer(Vector3.zero); 
+    }
+
+    private void Update()
+    {
+        if(IsPlayerStart && !Timer.IsRunning && !IsGameFinish)
+        {
+            Timer.Start(); 
+        }
+        if(Timer.IsRunning)
+        {
+            TimeSpan ts = Timer.Elapsed; 
+            Text_Timer.text = string.Format("{0:00}:{1:00}:{2:00}",ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+        }
     }
 
     public void Respawn()

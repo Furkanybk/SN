@@ -15,6 +15,8 @@ public class Death : StateMachineBehaviour
         ninja.RIGID_BODY.isKinematic = true;
          
         GameMenu.current.Dead();
+        GameManager.current.Timer.Stop();
+        GameManager.current.IsPlayerStart = false;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

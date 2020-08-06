@@ -1,4 +1,5 @@
-﻿using System.Collections; 
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine; 
 
 public enum CheckPointType
@@ -14,8 +15,22 @@ public class CheckPointManager : MonoBehaviour
     public CheckPointType type = CheckPointType.Checkpoint; 
     [SerializeField]
     private bool IsCheckpointPassed = false; 
-    private Vector3 CheckpointPos; 
+    [SerializeField]
+    private Material material;
 
+    private Vector3 CheckpointPos;
+
+    [SerializeField]
+    private List<GameObject> Lambs = new List<GameObject>();
+
+
+    private void Awake()
+    {
+        for (int i = 0; i < 4; i++)
+        { 
+            Lambs.Add(transform.GetChild(1).GetChild(i).gameObject);
+        } 
+    }
     private void Start()
     {
         CheckpointPos = transform.position;
@@ -28,6 +43,11 @@ public class CheckPointManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             IsCheckpointPassed = true;
+
+            foreach (var lamb in Lambs)
+            {
+                lamb.GetComponentInChildren<Renderer>().materials[1].color = material.color;
+            }
             switch (type)
             {
                 case CheckPointType.Checkpoint: 
@@ -84,6 +104,9 @@ public class CheckPointManager : MonoBehaviour
                     break;
                 case CheckPointType.Endpoint:
                     GameMenu.current.Complete();
+                    GameManager.current.IsGameFinish = true; 
+                    GameManager.current.Timer.Stop();
+                    gameObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
                     break;
             }
             GameManager.current.Text_CheckPoint.enabled = true;

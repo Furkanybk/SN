@@ -65,7 +65,7 @@ public class OrcController : MonoBehaviour
         Max = max;
         minMoveDistance = 1;
 
-        getRandomAttackType();
+        //getRandomAttackType();
 
         newMoveSpot();
     }
@@ -80,7 +80,7 @@ public class OrcController : MonoBehaviour
         Max = max;
         minMoveDistance = 1;
 
-        getRandomAttackType();
+        //getRandomAttackType();
 
         newMoveSpot();
     }

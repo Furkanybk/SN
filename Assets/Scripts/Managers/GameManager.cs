@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         {
             Timer.Start(); 
         }
-        if(Timer.IsRunning)
+        if(Text_Timer && Timer.IsRunning)
         {
             TimeSpan ts = Timer.Elapsed; 
             Text_Timer.text = string.Format("{0:00}:{1:00}:{2:00}",ts.Minutes, ts.Seconds, ts.Milliseconds / 10);

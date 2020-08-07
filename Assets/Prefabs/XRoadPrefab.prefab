@@ -18,7 +18,7 @@ GameObject:
   m_TagString: SlideArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &810537848121079059
 Transform:
@@ -110,8 +110,8 @@ MonoBehaviour:
   Orc: {fileID: 6615466232229755047, guid: a5b7407e156b70c4dab64506be3033c1, type: 3}
   MoveSpot: {fileID: 4084605632515737699, guid: e3b378a4d44d4074ab50018585735f24,
     type: 3}
-  OrcNumber: 1
-  DivideNumber: 1
+  OrcNumber: 3
+  DivideNumber: 5
   Margin: 0.5
 --- !u!1 &894215837753743875
 GameObject:
@@ -129,7 +129,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &894215837753743874
 Transform:
@@ -188,7 +188,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &894215838023107484
 Transform:
@@ -223,7 +223,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2014834460277254090
 Transform:

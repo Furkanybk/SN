@@ -21,6 +21,11 @@ public class CheckPointManager : MonoBehaviour
     private Vector3 CheckpointPos;
 
     [SerializeField]
+    public List<SpawnOrc> spawnList = new List<SpawnOrc>();
+    [SerializeField]
+    public List<SpawnOrc> deSpawnList = new List<SpawnOrc>();
+
+    [SerializeField]
     private List<GameObject> Lambs = new List<GameObject>();
 
 
@@ -43,6 +48,15 @@ public class CheckPointManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             IsCheckpointPassed = true;
+
+            foreach(SpawnOrc spawn in spawnList)
+            {
+                spawn.Spawn();
+            }
+            foreach(SpawnOrc deSpawn in deSpawnList)
+            {
+                deSpawn.deSpawn();
+            }
 
             foreach (var lamb in Lambs)
             {

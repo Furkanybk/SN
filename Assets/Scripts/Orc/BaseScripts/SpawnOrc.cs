@@ -29,8 +29,12 @@ public class SpawnOrc : MonoBehaviour
     [SerializeField] private float Margin = 0;
     private static int OrcCount = 0;
 
-    private void Awake()
+    [SerializeField]
+    private List<GameObject> OwnedOrcs = new List<GameObject>();
+
+    public void Spawn()
     {
+        deSpawn();
         parent = GameObject.Find("OrcSpawn").transform;
         float pieceS, pieceE;
         float ScaleX = transform.lossyScale.x - Margin * 2;
@@ -39,7 +43,7 @@ public class SpawnOrc : MonoBehaviour
         float startZ = transform.position.z - ScaleZ / 2;
         float endZ = transform.position.z + ScaleZ / 2;
         float startX = transform.position.x - ScaleX / 2;
-        float endX = transform.position.x + ScaleX / 2; 
+        float endX = transform.position.x + ScaleX / 2;
 
         switch (DivideAxis)
         {
@@ -55,9 +59,9 @@ public class SpawnOrc : MonoBehaviour
 
                     //Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, startZ), new Vector3(transform.position.x, transform.position.y + 5, startZ), Color.red, 100);
                     //Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, endZ), new Vector3(transform.position.x, transform.position.y + 5, endZ), Color.red, 100); 
-                     
+
                     //Debug.Log("PieceS:" + pieceS + " PieceE: " + pieceE);
-                    #endregion 
+                    #endregion
 
                     for (int i = 0; i < OrcNumber; i++)
                     {
@@ -66,6 +70,7 @@ public class SpawnOrc : MonoBehaviour
 
                         Vector3 position = new Vector3(x, 0.5f, z);
                         GameObject obj = Instantiate(Orc, position, Quaternion.identity, parent);
+                        OwnedOrcs.Add(obj);
                         obj.name = "Orc " + OrcCount++;
 
                         OrcController oc = obj.GetComponent<OrcController>();
@@ -77,7 +82,7 @@ public class SpawnOrc : MonoBehaviour
                 for (int j = 0; j < DivideNumber; j++)
                 {
                     pieceS = startZ + ScaleZ / DivideNumber * j;
-                    pieceE = startZ + ScaleZ / DivideNumber * (j+1);
+                    pieceE = startZ + ScaleZ / DivideNumber * (j + 1);
 
                     #region Debug
                     //Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, pieceS), new Vector3(transform.position.x, transform.position.y + 5, pieceS), Color.red, 100);
@@ -95,8 +100,9 @@ public class SpawnOrc : MonoBehaviour
                         float x = Random.Range(startX, endX);
                         float z = Random.Range(pieceS, pieceE);
 
-                        Vector3 position = new Vector3(x, 0.5f, z); 
+                        Vector3 position = new Vector3(x, 0.5f, z);
                         GameObject obj = Instantiate(Orc, position, Quaternion.identity, parent);
+                        OwnedOrcs.Add(obj);
                         obj.name = "Orc " + OrcCount++;
 
                         OrcController oc = obj.GetComponent<OrcController>();
@@ -104,6 +110,15 @@ public class SpawnOrc : MonoBehaviour
                     }
                 }
                 break;
-        } 
+        }
+    }
+
+    public void deSpawn()
+    {
+        for(int i = 0; i < OwnedOrcs.Count; i++)
+        {
+            Destroy(OwnedOrcs[i].GetComponent<OrcController>().MoveSpot.gameObject);
+            Destroy(OwnedOrcs[i]);
+        }
     }
 } 

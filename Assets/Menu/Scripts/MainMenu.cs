@@ -13,6 +13,11 @@ public class MainMenu : MonoBehaviour
     private AudioSource source { get { return GetComponent<AudioSource>(); } }
 
     private bool toggle = true;
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
     private void Start()
     {
         gameObject.AddComponent<AudioSource>();

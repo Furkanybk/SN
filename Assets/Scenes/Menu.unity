@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 04444a34a414f4c41bd94d0f99cd95c4
+  m_OcclusionCullingData: {fileID: 36300000, guid: fb9adcd1d1982e343a1cf3bc7133ea48,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -132,6 +133,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Maze_Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635859362198415709, guid: c30711460073e1f40b0e160c7e922d4d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6635859362198415711, guid: c30711460073e1f40b0e160c7e922d4d,
         type: 3}
